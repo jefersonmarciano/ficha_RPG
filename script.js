@@ -186,3 +186,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('saveButton').addEventListener('click', saveCharacterSheet);
     document.getElementById('loadButton').addEventListener('click', loadCharacterSheet);
 });
+document.querySelectorAll('.status-item').forEach(item => {
+    const maxInput = item.querySelector('.status-max');
+    const currentInput = item.querySelector('.status-current');
+    const percentInput = item.querySelector('.status-percent');
+
+    function calculatePercent() {
+        const max = parseFloat(maxInput.value) || 0;
+        const current = parseFloat(currentInput.value) || 0;
+        if (max > 0) {
+            const percent = Math.round((current / max) * 100);
+            percentInput.value = percent;
+        } else {
+            percentInput.value = '';
+        }
+    }
+
+    maxInput.addEventListener('input', calculatePercent);
+    currentInput.addEventListener('input', calculatePercent);
+});
