@@ -17,3 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     atualizarElementoOwlin();
 });
+
+// mudar cor de fundo
+document.addEventListener('DOMContentLoaded', function() {
+    const botaoMudarCor = document.getElementById('mudarCorFundo');
+    let corFundoBranca = true;
+    
+    botaoMudarCor.addEventListener('click', function() {
+        if (corFundoBranca) {
+            document.body.style.backgroundColor = "#000000";
+            corFundoBranca = false;
+        } else {
+            document.body.style.backgroundColor = "#FFFFFF";
+            corFundoBranca = true;
+        }
+    });
+});

@@ -28,15 +28,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // perfil
-document.getElementById('profile-image-upload').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = function(e) {
-        const img = document.getElementById('profile-image-preview');
-        img.src = e.target.result;
-        img.style.display = 'block';
-    }
-    
-    reader.readAsDataURL(file);
+document.addEventListener('DOMContentLoaded', function() {
+    const imageUpload = document.getElementById('profile-image-upload');
+    const imagePreview = document.getElementById('profile-image-preview');
+    const uploadArea = document.querySelector('.upload-area');
+
+    const changeImageBtn = document.getElementById('change-image');
+
+    imageUpload.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+            uploadArea.style.display = 'none'; // Oculta a área de upload
+            changeImageBtn.style.display = 'block';
+        }
+        
+        reader.readAsDataURL(file);
+    });
+
+    changeImageBtn.addEventListener('click', function() {
+        imagePreview.style.display = 'none';
+        uploadArea.style.display = 'flex';
+        changeImageBtn.style.display = 'none';
+        imageUpload.value = ''; // Limpa o input de arquivo
+    });
 });
