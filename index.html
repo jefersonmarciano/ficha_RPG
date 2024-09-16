@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Personagem RPG</title>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 <body>
     <div class="container">
@@ -16,94 +16,108 @@
             <button id="loadButton">Carregar Ficha</button>
         </div>
 
-        <div class="section">
-            <h2>Informações Básicas</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="name">Nome do player</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="name">Nome do personagem</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="class">Classe</label>
-                    <input type="text" id="class" name="class">
-                </div>
-                <div class="form-group">
-                    <label for="race">Raça</label>
-                    <select id="race" name="race">
-                        <option value="">Selecione uma raça</option>
-                        <option value="owlin">Owlin</option>
-                        <option value="meio-orc">Meio-Orc</option>
-                        <option value="minotauro">Minotauro</option>
-                        <option value="centauro">Centauro</option>
-                        <option value="tabaxi">Tabaxi</option>
-                        <option value="kenkaku">Kenkaku</option>
-                        <option value="aarakocra">Aarakocra</option>
-                        <option value="elfo">Elfo</option>
-                        <option value="sereia-tritao">Sereia/Tritão</option>
-                        <option value="goliath">Goliath</option>
-                        <option value="dwarf">Dwarf</option>
-                        <option value="archelon">Archelon</option>
-                        <option value="draconato">Draconato</option>
-                        <option value="deadalus">Deadalus</option>
-                        <option value="eldritch">Eldritch</option>
-                        <option value="spectre">Spectre</option>
-                        <option value="osteon">Osteon</option>
-                        <option value="typhoon">Typhoon</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="element">Elemento</label>
-                    <select id="element" name="element">
-                        <option value="">Selecione um elemento</option>
-                        <option value="fogo">Fogo</option>
-                        <option value="agua">Água</option>
-                        <option value="terra">Terra</option>
-                        <option value="ar">Ar</option>
-                        <option value="luz">Luz</option>
-                        <option value="trevas">Trevas</option>
-                        <option value="raio">Raio</option>
-                        <option value="gelo">Gelo</option>
-                    </select>
-                </div>
-                <div class="form-group" id="owlin-element-group" style="display: none;">
-                    <label for="owlin-element">Elemento do Owlin</label>
-                    <select id="owlin-element" name="owlin-element">
-                        <option value="">Selecione um elemento</option>
-                        <option value="fogo">Fogo</option>
-                        <option value="agua">Água</option>
-                        <option value="terra">Terra</option>
-                        <option value="ar">Ar</option>
-                        <option value="luz">Luz</option>
-                        <option value="trevas">Trevas</option>
-                        <option value="raio">Raio</option>
-                        <option value="gelo">Gelo</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="level">Nível</label>
-                    <input type="number" id="level" name="level">
+        <div class="main-info-container">
+            <div class="section basic-info">
+                <h2>Informações Básicas</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="player-name">Nome do player</label>
+                        <input type="text" id="player-name" name="player-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="character-name">Nome do personagem</label>
+                        <input type="text" id="character-name" name="character-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Classe</label>
+                        <input type="text" id="class" name="class">
+                    </div>
+                    <div class="form-group">
+                        <label for="race">Raça</label>
+                        <select id="race" name="race">
+                            <option value="">Selecione uma raça</option>
+                            <option value="owlin">Owlin</option>
+                            <option value="meio-orc">Meio-Orc</option>
+                            <option value="minotauro">Minotauro</option>
+                            <option value="centauro">Centauro</option>
+                            <option value="tabaxi">Tabaxi</option>
+                            <option value="kenkaku">Kenkaku</option>
+                            <option value="aarakocra">Aarakocra</option>
+                            <option value="elfo">Elfo</option>
+                            <option value="sereia-tritao">Sereia/Tritão</option>
+                            <option value="goliath">Goliath</option>
+                            <option value="dwarf">Dwarf</option>
+                            <option value="archelon">Archelon</option>
+                            <option value="draconato">Draconato</option>
+                            <option value="deadalus">Deadalus</option>
+                            <option value="eldritch">Eldritch</option>
+                            <option value="spectre">Spectre</option>
+                            <option value="osteon">Osteon</option>
+                            <option value="typhoon">Typhoon</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="element">Elemento</label>
+                        <select id="element" name="element">
+                            <option value="">Selecione um elemento</option>
+                            <option value="fogo">Fogo</option>
+                            <option value="agua">Água</option>
+                            <option value="terra">Terra</option>
+                            <option value="ar">Ar</option>
+                            <option value="luz">Luz</option>
+                            <option value="trevas">Trevas</option>
+                            <option value="raio">Raio</option>
+                            <option value="gelo">Gelo</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="owlin-element-group" style="display: none;">
+                        <label for="owlin-element">Elemento do Owlin</label>
+                        <select id="owlin-element" name="owlin-element">
+                            <option value="">Selecione um elemento</option>
+                            <option value="fogo">Fogo</option>
+                            <option value="agua">Água</option>
+                            <option value="terra">Terra</option>
+                            <option value="ar">Ar</option>
+                            <option value="luz">Luz</option>
+                            <option value="trevas">Trevas</option>
+                            <option value="raio">Raio</option>
+                            <option value="gelo">Gelo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Nível</label>
+                        <input type="number" id="level" name="level">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <h2>Status</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="hp">Vida</label>
-                    <input type="number" id="hp" name="hp">
-                </div>
-                <div class="form-group">
-                    <label for="mana">Mana</label>
-                    <input type="number" id="mana" name="mana">
-                </div>
-                <div class="form-group">
-                    <label for="stamina">Stamina</label>
-                    <input type="number" id="stamina" name="stamina">
+            <div class="section status">
+                <h2>Status</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <label>Vida</label>
+                        <div class="status-inputs">
+                            <input type="number" name="hp-max" placeholder="Máxima">
+                            <input type="number" name="hp-current" placeholder="Atual">
+                            <input type="number" name="hp-percent" placeholder="%" max="100">
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <label>Mana</label>
+                        <div class="status-inputs">
+                            <input type="number" name="mana-max" placeholder="Máxima">
+                            <input type="number" name="mana-current" placeholder="Atual">
+                            <input type="number" name="mana-percent" placeholder="%" max="100">
+                        </div>
+                    </div>
+                    <div class="status-item">
+                        <label>Stamina</label>
+                        <div class="status-inputs">
+                            <input type="number" name="stamina-max" placeholder="Máxima">
+                            <input type="number" name="stamina-current" placeholder="Atual">
+                            <input type="number" name="stamina-percent" placeholder="%" max="100">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -405,7 +419,7 @@
         </div>
     </div>
 
-    
     <script src="script.js"></script>
+   
 </body>
 </html>
