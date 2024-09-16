@@ -4,95 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Personagem RPG</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-
-        .section {
-            margin-bottom: 30px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        button {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-
-        button:hover {
-            background-color: #27ae60;
-        }
-
-        @media (max-width: 600px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="container">
@@ -215,90 +128,161 @@
             </table>
         </div>
 
-        <div class="section">
+        <div class="tab-content" id="skills">
             <h2>Perícias</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="athletics">Atletismo</label>
-                    <input type="number" id="athletics" name="athletics">
-                </div>
-                <div class="form-group">
-                    <label for="sleightOfHand">Prestidigitação</label>
-                    <input type="number" id="sleightOfHand" name="sleightOfHand">
-                </div>
-                <div class="form-group">
-                    <label for="fighting">Luta/Briga</label>
-                    <input type="number" id="fighting" name="fighting">
-                </div>
-                <div class="form-group">
-                    <label for="shooting">Pontaria</label>
-                    <input type="number" id="shooting" name="shooting">
-                </div>
-                <div class="form-group">
-                    <label for="magicCast">Magia (Cast)</label>
-                    <input type="number" id="magicCast" name="magicCast">
-                </div>
-                <div class="form-group">
-                    <label for="reflexes">Reflexos</label>
-                    <input type="number" id="reflexes" name="reflexes">
-                </div>
-                <div class="form-group">
-                    <label for="manaSense">Mana Sense</label>
-                    <input type="number" id="manaSense" name="manaSense">
-                </div>
-                <div class="form-group">
-                    <label for="fortitude">Fortitude</label>
-                    <input type="number" id="fortitude" name="fortitude">
-                </div>
-                <div class="form-group">
-                    <label for="willpower">Vontade</label>
-                    <input type="number" id="willpower" name="willpower">
-                </div>
-                <div class="form-group">
-                    <label for="survival">Sobrevivência</label>
-                    <input type="number" id="survival" name="survival">
-                </div>
-                <div class="form-group">
-                    <label for="persuasion">Persuasão</label>
-                    <input type="number" id="persuasion" name="persuasion">
-                </div>
-                <div class="form-group">
-                    <label for="diplomacy">Diplomacia</label>
-                    <input type="number" id="diplomacy" name="diplomacy">
-                </div>
-                <div class="form-group">
-                    <label for="history">História</label>
-                    <input type="number" id="history" name="history">
-                </div>
-                <div class="form-group">
-                    <label for="arcana">Arcana</label>
-                    <input type="number" id="arcana" name="arcana">
-                </div>
-                <div class="form-group">
-                    <label for="insight">Intuição</label>
-                    <input type="number" id="insight" name="insight">
-                </div>
-                <div class="form-group">
-                    <label for="perception">Percepção</label>
-                    <input type="number" id="perception" name="perception">
-                </div>
-                <div class="form-group">
-                    <label for="stealth">Stealth</label>
-                    <input type="number" id="stealth" name="stealth">
-                </div>
-                <div class="form-group">
-                    <label for="loot">Loot</label>
-                    <input type="number" id="loot" name="loot">
-                </div>
-                <div class="form-group">
-                    <label for="medicine">Medicina</label>
-                    <input type="number" id="medicine" name="medicine">
-                </div>
-                <div class="form-group">
-                    <label for="concentration">Concentração</label>
-                    <input type="number" id="concentration" name="concentration">
-                </div>
-            </div>
+            <table id="skills-table">
+                <thead>
+                    <tr>
+                        <th>Perícia</th>
+                        <th>Roll</th>
+                        <th>Atributos</th>
+                        <th>Treinamento</th>
+                        <th>Outros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atletismo</td>
+                        <td><input type="number" name="athletics-roll"></td>
+                        <td><input type="number" name="athletics-attributes"></td>
+                        <td><input type="number" name="athletics-training"></td>
+                        <td><input type="number" name="athletics-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Prestidigitação</td>
+                        <td><input type="number" name="sleightOfHand-roll"></td>
+                        <td><input type="number" name="sleightOfHand-attributes"></td>
+                        <td><input type="number" name="sleightOfHand-training"></td>
+                        <td><input type="number" name="sleightOfHand-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Luta/Briga</td>
+                        <td><input type="number" name="fighting-roll"></td>
+                        <td><input type="number" name="fighting-attributes"></td>
+                        <td><input type="number" name="fighting-training"></td>
+                        <td><input type="number" name="fighting-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Pontaria</td>
+                        <td><input type="number" name="shooting-roll"></td>
+                        <td><input type="number" name="shooting-attributes"></td>
+                        <td><input type="number" name="shooting-training"></td>
+                        <td><input type="number" name="shooting-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Magia (Cast)</td>
+                        <td><input type="number" name="magicCast-roll"></td>
+                        <td><input type="number" name="magicCast-attributes"></td>
+                        <td><input type="number" name="magicCast-training"></td>
+                        <td><input type="number" name="magicCast-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Reflexos</td>
+                        <td><input type="number" name="reflexes-roll"></td>
+                        <td><input type="number" name="reflexes-attributes"></td>
+                        <td><input type="number" name="reflexes-training"></td>
+                        <td><input type="number" name="reflexes-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Mana Sense</td>
+                        <td><input type="number" name="manaSense-roll"></td>
+                        <td><input type="number" name="manaSense-attributes"></td>
+                        <td><input type="number" name="manaSense-training"></td>
+                        <td><input type="number" name="manaSense-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Fortitude</td>
+                        <td><input type="number" name="fortitude-roll"></td>
+                        <td><input type="number" name="fortitude-attributes"></td>
+                        <td><input type="number" name="fortitude-training"></td>
+                        <td><input type="number" name="fortitude-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Vontade</td>
+                        <td><input type="number" name="willpower-roll"></td>
+                        <td><input type="number" name="willpower-attributes"></td>
+                        <td><input type="number" name="willpower-training"></td>
+                        <td><input type="number" name="willpower-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Sobrevivência</td>
+                        <td><input type="number" name="survival-roll"></td>
+                        <td><input type="number" name="survival-attributes"></td>
+                        <td><input type="number" name="survival-training"></td>
+                        <td><input type="number" name="survival-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Persuasão</td>
+                        <td><input type="number" name="persuasion-roll"></td>
+                        <td><input type="number" name="persuasion-attributes"></td>
+                        <td><input type="number" name="persuasion-training"></td>
+                        <td><input type="number" name="persuasion-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Diplomacia</td>
+                        <td><input type="number" name="diplomacy-roll"></td>
+                        <td><input type="number" name="diplomacy-attributes"></td>
+                        <td><input type="number" name="diplomacy-training"></td>
+                        <td><input type="number" name="diplomacy-others"></td>
+                    </tr>
+                    <tr>
+                        <td>História</td>
+                        <td><input type="number" name="history-roll"></td>
+                        <td><input type="number" name="history-attributes"></td>
+                        <td><input type="number" name="history-training"></td>
+                        <td><input type="number" name="history-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Arcana</td>
+                        <td><input type="number" name="arcana-roll"></td>
+                        <td><input type="number" name="arcana-attributes"></td>
+                        <td><input type="number" name="arcana-training"></td>
+                        <td><input type="number" name="arcana-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Intuição</td>
+                        <td><input type="number" name="insight-roll"></td>
+                        <td><input type="number" name="insight-attributes"></td>
+                        <td><input type="number" name="insight-training"></td>
+                        <td><input type="number" name="insight-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Percepção</td>
+                        <td><input type="number" name="perception-roll"></td>
+                        <td><input type="number" name="perception-attributes"></td>
+                        <td><input type="number" name="perception-training"></td>
+                        <td><input type="number" name="perception-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Stealth</td>
+                        <td><input type="number" name="stealth-roll"></td>
+                        <td><input type="number" name="stealth-attributes"></td>
+                        <td><input type="number" name="stealth-training"></td>
+                        <td><input type="number" name="stealth-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Loot</td>
+                        <td><input type="number" name="loot-roll"></td>
+                        <td><input type="number" name="loot-attributes"></td>
+                        <td><input type="number" name="loot-training"></td>
+                        <td><input type="number" name="loot-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Medicina</td>
+                        <td><input type="number" name="medicine-roll"></td>
+                        <td><input type="number" name="medicine-attributes"></td>
+                        <td><input type="number" name="medicine-training"></td>
+                        <td><input type="number" name="medicine-others"></td>
+                    </tr>
+                    <tr>
+                        <td>Concentração</td>
+                        <td><input type="number" name="concentration-roll"></td>
+                        <td><input type="number" name="concentration-attributes"></td>
+                        <td><input type="number" name="concentration-training"></td>
+                        <td><input type="number" name="concentration-others"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="section">
@@ -389,252 +373,7 @@
         </div>
     </div>
 
-    <script>
-        // Funções para adicionar linhas nas tabelas
-        function addTableRow(tableId, fields) {
-            const table = document.getElementById(tableId);
-            const newRow = table.insertRow();
-            
-            fields.forEach(field => {
-                const cell = newRow.insertCell();
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.name = field;
-                cell.appendChild(input);
-            });
-
-            const actionsCell = newRow.insertCell();
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Remover';
-            deleteButton.onclick = function() {
-                table.deleteRow(newRow.rowIndex);
-            };
-            actionsCell.appendChild(deleteButton);
-        }
-
-        // Adicionar arma
-        document.getElementById('add-weapon').addEventListener('click', () => {
-            addTableRow('weapons-table', ['type', 'generation', 'attack', 'magicCast']);
-        });
-
-        // Adicionar armadura
-        document.getElementById('add-armor').addEventListener('click', () => {
-            addTableRow('armors-table', ['generation', 'ca', 'move', 'element']);
-        });
-
-        // Adicionar habilidade de Ciclo 1
-        document.getElementById('add-cycle1').addEventListener('click', () => {
-            addTableRow('cycle1-table', ['type', 'name', 'action', 'resource', 'duration', 'effect1', 'effect2', 'range', 'mp', 'sp']);
-        });
-
-        // Adicionar habilidade de Ciclo 2
-        document.getElementById('add-cycle2').addEventListener('click', () => {
-            addTableRow('cycle2-table', ['type', 'name', 'action', 'resource', 'duration', 'effect1', 'effect2', 'range', 'mp', 'sp']);
-        });
-
-        // Função para salvar os dados
-        function saveCharacterSheet() {
-            const characterData = {
-                name: document.getElementById('name').value,
-                class: document.getElementById('class').value,
-                race: document.getElementById('race').value,
-                level: document.getElementById('level').value,
-                status: {
-                    hp: document.getElementById('hp').value,
-                    mana: document.getElementById('mana').value,
-                    stamina: document.getElementById('stamina').value
-                },
-                attributes: {
-                    agility: {
-                        base: document.getElementById('agility-base').value,
-                        score: document.getElementById('agility-score').value,
-                        mod: document.getElementById('agility-mod').value
-                    },
-                    constitution: {
-                        base: document.getElementById('constitution-base').value,
-                        score: document.getElementById('constitution-score').value,
-                        mod: document.getElementById('constitution-mod').value
-                    },
-                    strength: {
-                        base: document.getElementById('strength-base').value,
-                        score: document.getElementById('strength-score').value,
-                        mod: document.getElementById('strength-mod').value
-                    },
-                    intellect: {
-                        base: document.getElementById('intellect-base').value,
-                        score: document.getElementById('intellect-score').value,
-                        mod: document.getElementById('intellect-mod').value
-                    },
-                    wisdom: {
-                        base: document.getElementById('wisdom-base').value,
-                        score: document.getElementById('wisdom-score').value,
-                        mod: document.getElementById('wisdom-mod').value
-                    },
-                    presence: {
-                        base: document.getElementById('presence-base').value,
-                        score: document.getElementById('presence-score').value,
-                        mod: document.getElementById('presence-mod').value
-                    }
-                },
-                skills: {
-                    athletics: document.getElementById('athletics').value,
-                    sleightOfHand: document.getElementById('sleightOfHand').value,
-                    fighting: document.getElementById('fighting').value,
-                    shooting: document.getElementById('shooting').value,
-                    magicCast: document.getElementById('magicCast').value,
-                    reflexes: document.getElementById('reflexes').value,
-                    manaSense: document.getElementById('manaSense').value,
-                    fortitude: document.getElementById('fortitude').value,
-                    willpower: document.getElementById('willpower').value,
-                    survival: document.getElementById('survival').value,
-                    persuasion: document.getElementById('persuasion').value,
-                    diplomacy: document.getElementById('diplomacy').value,
-                    history: document.getElementById('history').value,
-                    arcana: document.getElementById('arcana').value,
-                    insight: document.getElementById('insight').value,
-                    perception: document.getElementById('perception').value,
-                    stealth: document.getElementById('stealth').value,
-                    loot: document.getElementById('loot').value,
-                    medicine: document.getElementById('medicine').value,
-                    concentration: document.getElementById('concentration').value
-                },
-                weapons: Array.from(document.getElementById('weapons-table').rows).slice(1).map(row => ({
-                    type: row.cells[0].querySelector('input').value,
-                    generation: row.cells[1].querySelector('input').value,
-                    attack: row.cells[2].querySelector('input').value,
-                    magicCast: row.cells[3].querySelector('input').value
-                })),
-                armors: Array.from(document.getElementById('armors-table').rows).slice(1).map(row => ({
-                    generation: row.cells[0].querySelector('input').value,
-                    ca: row.cells[1].querySelector('input').value,
-                    move: row.cells[2].querySelector('input').value,
-                    element: row.cells[3].querySelector('input').value
-                })),
-                cycle1Skills: Array.from(document.getElementById('cycle1-table').rows).slice(1).map(row => ({
-                    type: row.cells[0].querySelector('input').value,
-                    name: row.cells[1].querySelector('input').value,
-                    action: row.cells[2].querySelector('input').value,
-                    resource: row.cells[3].querySelector('input').value,
-                    duration: row.cells[4].querySelector('input').value,
-                    effect1: row.cells[5].querySelector('input').value,
-                    effect2: row.cells[6].querySelector('input').value,
-                    range: row.cells[7].querySelector('input').value,
-                    mp: row.cells[8].querySelector('input').value,
-                    sp: row.cells[9].querySelector('input').value
-                })),
-                cycle2Skills: Array.from(document.getElementById('cycle2-table').rows).slice(1).map(row => ({
-                    type: row.cells[0].querySelector('input').value,
-                    name: row.cells[1].querySelector('input').value,
-                    action: row.cells[2].querySelector('input').value,
-                    resource: row.cells[3].querySelector('input').value,
-                    duration: row.cells[4].querySelector('input').value,
-                    effect1: row.cells[5].querySelector('input').value,
-                    effect2: row.cells[6].querySelector('input').value,
-                    range: row.cells[7].querySelector('input').value,
-                    mp: row.cells[8].querySelector('input').value,
-                    sp: row.cells[9].querySelector('input').value
-                }))
-            };
-            localStorage.setItem('characterSheet', JSON.stringify(characterData));
-            alert('Ficha salva com sucesso!');
-        }
-
-        // Função para carregar os dados
-        function loadCharacterSheet() {
-            const savedData = localStorage.getItem('characterSheet');
-            if (savedData) {
-                const characterData = JSON.parse(savedData);
-                document.getElementById('name').value = characterData.name;
-                document.getElementById('class').value = characterData.class;
-                document.getElementById('race').value = characterData.race;
-                document.getElementById('level').value = characterData.level;
-
-                // Carregar status
-                document.getElementById('hp').value = characterData.status.hp;
-                document.getElementById('mana').value = characterData.status.mana;
-                document.getElementById('stamina').value = characterData.status.stamina;
-
-                // Carregar atributos
-                for (const [attr, values] of Object.entries(characterData.attributes)) {
-                    document.getElementById(`${attr}-base`).value = values.base;
-                    document.getElementById(`${attr}-score`).value = values.score;
-                    document.getElementById(`${attr}-mod`).value = values.mod;
-                }
-
-                // Carregar perícias
-                for (const [skill, value] of Object.entries(characterData.skills)) {
-                    document.getElementById(skill).value = value;
-                }
-
-                // Carregar armas
-                const weaponsTable = document.getElementById('weapons-table');
-                weaponsTable.innerHTML = '<tr><th>Tipo</th><th>Geração</th><th>Ataque</th><th>Magia Cast</th><th>Ações</th></tr>';
-                characterData.weapons.forEach(weapon => {
-                    addTableRow('weapons-table', ['type', 'generation', 'attack', 'magicCast']);
-                    const newRow = weaponsTable.rows[weaponsTable.rows.length - 1];
-                    newRow.cells[0].querySelector('input').value = weapon.type;
-                    newRow.cells[1].querySelector('input').value = weapon.generation;
-                    newRow.cells[2].querySelector('input').value = weapon.attack;
-                    newRow.cells[3].querySelector('input').value = weapon.magicCast;
-                });
-
-                // Carregar armaduras
-                const armorsTable = document.getElementById('armors-table');
-                armorsTable.innerHTML = '<tr><th>Geração</th><th>CA</th><th>Move</th><th>Elemento</th><th>Ações</th></tr>';
-                characterData.armors.forEach(armor => {
-                    addTableRow('armors-table', ['generation', 'ca', 'move', 'element']);
-                    const newRow = armorsTable.rows[armorsTable.rows.length - 1];
-                    newRow.cells[0].querySelector('input').value = armor.generation;
-                    newRow.cells[1].querySelector('input').value = armor.ca;
-                    newRow.cells[2].querySelector('input').value = armor.move;
-                    newRow.cells[3].querySelector('input').value = armor.element;
-                });
-
-                // Carregar habilidades de Ciclo 1
-                const cycle1Table = document.getElementById('cycle1-table');
-                cycle1Table.innerHTML = '<tr><th>Tipo</th><th>Magia/Habilidade</th><th>Ação</th><th>Recurso</th><th>Duração</th><th>Efeito 1</th><th>Efeito 2</th><th>Alcance</th><th>MP</th><th>SP</th><th>Ações</th></tr>';
-                characterData.cycle1Skills.forEach(skill => {
-                    addTableRow('cycle1-table', ['type', 'name', 'action', 'resource', 'duration', 'effect1', 'effect2', 'range', 'mp', 'sp']);
-                    const newRow = cycle1Table.rows[cycle1Table.rows.length - 1];
-                    newRow.cells[0].querySelector('input').value = skill.type;
-                    newRow.cells[1].querySelector('input').value = skill.name;
-                    newRow.cells[2].querySelector('input').value = skill.action;
-                    newRow.cells[3].querySelector('input').value = skill.resource;
-                    newRow.cells[4].querySelector('input').value = skill.duration;
-                    newRow.cells[5].querySelector('input').value = skill.effect1;
-                    newRow.cells[6].querySelector('input').value = skill.effect2;
-                    newRow.cells[7].querySelector('input').value = skill.range;
-                    newRow.cells[8].querySelector('input').value = skill.mp;
-                    newRow.cells[9].querySelector('input').value = skill.sp;
-                });
-
-                // Carregar habilidades de Ciclo 2
-                const cycle2Table = document.getElementById('cycle2-table');
-                cycle2Table.innerHTML = '<tr><th>Tipo</th><th>Magia/Habilidade</th><th>Ação</th><th>Recurso</th><th>Duração</th><th>Efeito 1</th><th>Efeito 2</th><th>Alcance</th><th>MP</th><th>SP</th><th>Ações</th></tr>';
-                characterData.cycle2Skills.forEach(skill => {
-                    addTableRow('cycle2-table', ['type', 'name', 'action', 'resource', 'duration', 'effect1', 'effect2', 'range', 'mp', 'sp']);
-                    const newRow = cycle2Table.rows[cycle2Table.rows.length - 1];
-                    newRow.cells[0].querySelector('input').value = skill.type;
-                    newRow.cells[1].querySelector('input').value = skill.name;
-                    newRow.cells[2].querySelector('input').value = skill.action;
-                    newRow.cells[3].querySelector('input').value = skill.resource;
-                    newRow.cells[4].querySelector('input').value = skill.duration;
-                    newRow.cells[5].querySelector('input').value = skill.effect1;
-                    newRow.cells[6].querySelector('input').value = skill.effect2;
-                    newRow.cells[7].querySelector('input').value = skill.range;
-                    newRow.cells[8].querySelector('input').value = skill.mp;
-                    newRow.cells[9].querySelector('input').value = skill.sp;
-                });
-
-                alert('Ficha carregada com sucesso!');
-            } else {
-                alert('Nenhuma ficha salva encontrada.');
-            }
-        }
-
-        // Adicionar event listeners para os botões de salvar e carregar
-        document.getElementById('saveButton').addEventListener('click', saveCharacterSheet);
-        document.getElementById('loadButton').addEventListener('click', loadCharacterSheet);
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
