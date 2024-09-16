@@ -15,7 +15,21 @@
             <button id="saveButton">Salvar Ficha</button>
             <button id="loadButton">Carregar Ficha</button>
         </div>
+        <div class="profile-image-container">
+            <h2>Imagem de Perfil</h2>
+            <div class="image-preview">
+                <img id="profile-image-preview" src="#" alt="Imagem de perfil">
+                <div class="upload-area">
+                    <input type="file" id="profile-image-upload" accept="image/*">
+                    <label for="profile-image-upload" class="upload-button">
+                        <i class="fas fa-plus"></i>
+                        Escolher Imagem
+                    </label>
+                </div>
+            </div>
+        </div>
 
+        
         <div class="main-info-container">
             <div class="section basic-info">
                 <h2>Informações Básicas</h2>
@@ -97,25 +111,25 @@
                     <div class="status-item">
                         <label>Vida</label>
                         <div class="status-inputs">
-                            <input type="number" name="hp-max" placeholder="Máxima" class="status-max">
-                            <input type="number" name="hp-current" placeholder="Atual" class="status-current">
-                            <input type="number" name="hp-percent" placeholder="%" max="100" class="status-percent" readonly>
+                            <input type="number" name="hp-max" placeholder="Máxima">
+                            <input type="number" name="hp-current" placeholder="Atual">
+                            <input type="number" name="hp-percent" placeholder="%" max="100" >
                         </div>
                     </div>
                     <div class="status-item">
                         <label>Mana</label>
                         <div class="status-inputs">
-                            <input type="number" name="mana-max" placeholder="Máxima" class="status-max">
-                            <input type="number" name="mana-current" placeholder="Atual" class="status-current">
-                            <input type="number" name="mana-percent" placeholder="%" max="100" class="status-percent" readonly>
+                            <input type="number" name="mana-max" placeholder="Máxima">
+                            <input type="number" name="mana-current" placeholder="Atual">
+                            <input type="number" name="mana-percent" placeholder="%" max="100">
                         </div>
                     </div>
                     <div class="status-item">
                         <label>Stamina</label>
                         <div class="status-inputs">
-                            <input type="number" name="stamina-max" placeholder="Máxima" class="status-max">
-                            <input type="number" name="stamina-current" placeholder="Atual" class="status-current">
-                            <input type="number" name="stamina-percent" placeholder="%" max="100" class="status-percent" readonly>
+                            <input type="number" name="stamina-max" placeholder="Máxima">
+                            <input type="number" name="stamina-current" placeholder="Atual">
+                            <input type="number" name="stamina-percent" placeholder="%" max="100">
                         </div>
                     </div>
                 </div>
@@ -331,95 +345,96 @@
             </table>
         </div>
 
-        <div class="section">
-            <h2>Equipamento</h2>
-            <h3>Armas</h3>
-            <table id="weapons-table">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Geração</th>
-                        <th>Ataque</th>
-                        <th>Magia Cast</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Linhas de armas serão adicionadas aqui via JavaScript -->
-                </tbody>
-            </table>
-            <button id="add-weapon">Adicionar Arma</button>
-
-            <h3>Armaduras</h3>
-            <table id="armors-table">
-                <thead>
-                    <tr>
-                        <th>Geração</th>
-                        <th>CA</th>
-                        <th>Move</th>
-                        <th>Elemento</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Linhas de armaduras serão adicionadas aqui via JavaScript -->
-                </tbody>
-            </table>
-            <button id="add-armor">Adicionar Armadura</button>
+        <div class="equipment-container">
+            <section class="weapons">
+                <h2>Armas</h2>
+                <div class="weapons-grid">
+                    <div class="weapon-column">
+                        <label>Tipo</label>
+                        <input type="text" name="weapon-type[]">
+                        
+                    </div>
+                    <div class="weapon-column">
+                        <label>Geração</label>
+                        <input type="text" name="weapon-generation[]">
+                        
+                    </div>
+                    <div class="weapon-column">
+                        <label>Elemento</label>
+                        <select name="weapon-element[]">
+                            <option value="">Selecione</option>
+                            <option value="fogo">Fogo</option>
+                            <option value="agua">Água</option>
+                            <option value="terra">Terra</option>
+                            <option value="ar">Ar</option>
+                            <option value="luz">Luz</option>
+                            <option value="trevas">Trevas</option>
+                            <option value="raio">Raio</option>
+                            <option value="gelo">Gelo</option>
+                        </select>
+                        
+                    </div>
+                    <div class="weapon-column">
+                        <label>Dano</label>
+                        <input type="text" name="weapon-damage[]">
+                        
+                    </div>
+                    <div class="weapon-column">
+                        <label>DEF</label>
+                        <input type="text" name="weapon-def[]">
+                        
+                    </div>
+                    <div class="weapon-column">
+                        <label>Move</label>
+                        <input type="text" name="weapon-move[]">
+                        
+                    </div>
+                </div>
+                <button id="add-weapon">Adicionar Arma</button>
+            </section>
+            
+            <section class="armor">
+                <h2>Armaduras</h2>
+                <div class="armors-grid">
+                    <div class="armor-column">
+                        <label>Tipo</label>
+                        <input type="text" name="armor-type[]">
+                    </div>
+                    <div class="armor-column">
+                        <label>Geração</label>
+                        <input type="text" name="armor-generation[]">
+                    </div>
+                    <div class="armor-column">
+                        <label>CA</label>
+                        <input type="text" name="armor-ca[]">
+                    </div>
+                    <div class="armor-column">
+                        <label>Move</label>
+                        <input type="text" name="armor-move[]">
+                    </div>
+                    <div class="armor-column">
+                        <label>Elemento</label>
+                        <select name="armor-element[]">
+                            <option value="">Selecione</option>
+                            <option value="fogo">Fogo</option>
+                            <option value="agua">Água</option>
+                            <option value="terra">Terra</option>
+                            <option value="ar">Ar</option>
+                            <option value="luz">Luz</option>
+                            <option value="trevas">Trevas</option>
+                            <option value="raio">Raio</option>
+                            <option value="gelo">Gelo</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="add-armor">Adicionar Armadura</button>
+            </section>
         </div>
 
-        <div class="section">
-            <h2>Habilidades de Ciclo 1</h2>
-            <table id="cycle1-table">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Magia/Habilidade</th>
-                        <th>Ação</th>
-                        <th>Recurso</th>
-                        <th>Duração</th>
-                        <th>Efeito 1</th>
-                        <th>Efeito 2</th>
-                        <th>Alcance</th>
-                        <th>MP</th>
-                        <th>SP</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Linhas de habilidades serão adicionadas aqui via JavaScript -->
-                </tbody>
-            </table>
-            <button id="add-cycle1">Adicionar Habilidade</button>
-        </div>
-
-        <div class="section">
-            <h2>Habilidades de Ciclo 2</h2>
-            <table id="cycle2-table">
-                <thead>
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Magia/Habilidade</th>
-                        <th>Ação</th>
-                        <th>Recurso</th>
-                        <th>Duração</th>
-                        <th>Efeito 1</th>
-                        <th>Efeito 2</th>
-                        <th>Alcance</th>
-                        <th>MP</th>
-                        <th>SP</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Linhas de habilidades serão adicionadas aqui via JavaScript -->
-                </tbody>
-            </table>
-            <button id="add-cycle2">Adicionar Habilidade</button>
-        </div>
+        <script src="script.js"></script>
+        <script src="scriptArma.js"></script>
+        <script src="status.js"></script>
+        
     </div>
-
-    <script src="script.js"></script>
-   
 </body>
 </html>

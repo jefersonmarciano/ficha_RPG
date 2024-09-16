@@ -16,27 +16,6 @@ input[type="number"]::-webkit-inner-spin-button,
             -moz-appearance: textfield;
         }
 
-        
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 10px;
-}
-
-.button-container button {
-    background-color: #87CEFA; /* Azul claro */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-}
 .container {
     background-color: #f4f4f4;
     padding: 20px;
@@ -152,4 +131,99 @@ button:hover {
     .main-info-container {
         flex-direction: column;
     }
+}
+
+.weapons-grid {
+    display: flex;
+    
+}
+
+.weapon-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.weapon-column input {
+    margin-bottom: 5px;
+}
+
+.armors-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.armor-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.armor-column input,
+.armor-column select {
+    margin-top: 5px;
+}
+/* ... código existente ... */
+.equipment-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .weapons, .armor {
+    width: 48%; /* Ajuste conforme necessário */
+  }
+  /* ... código existente ... */
+
+  .profile-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-preview {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#profile-image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.upload-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#profile-image-upload {
+    display: none;
+}
+
+.upload-button {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+    background-color: #45a049;
+}
+
+.upload-button i {
+    margin-right: 5px;
 }
