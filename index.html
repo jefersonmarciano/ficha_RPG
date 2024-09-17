@@ -32,6 +32,50 @@
                         </label>
                     </div>
                 </div>
+                <!-- Inicio da mochila -->
+            <div class="inventory-container">
+                <button id="mostrarTabela">Abrir Mochila</button>
+            </div>
+
+            <div id="tabelaPopup" class="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background-color: #f0f0f0;">
+                <div class="popup-conteudo">
+                    <span class="fechar" style="color: red;">&times;</span>
+                    <h2>Mochila</h2>
+                    <table id="tabelaItens">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th>Descrição</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Os itens serão adicionados aqui dinamicamente -->
+                        </tbody>
+                    </table>
+                    <button id="adicionarItem">Adicionar Item</button>
+                    <button id="fecharPopup">Fechar</button>
+                </div>
+            </div>
+
+            <script>
+                document.getElementById('mostrarTabela').addEventListener('click', function() {
+                    document.getElementById('tabelaPopup').style.display = 'block';
+                });
+
+                document.getElementById('fecharPopup').addEventListener('click', function() {
+                    document.getElementById('tabelaPopup').style.display = 'none';
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (event.target == document.getElementById('tabelaPopup')) {
+                        document.getElementById('tabelaPopup').style.display = 'none';
+                    }
+                });
+            </script>
+
+            <!-- Fim da mochila -->
             </div>
             <div class="section basic-info">
                 <h2>Informações Básicas</h2>
