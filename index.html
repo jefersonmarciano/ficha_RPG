@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ficha de Personagem RPG</title>
     <link rel="stylesheet" href="./css/style.css">
-
+    <script src="./js/selections.js"></script>
 </head>
 <body>
     <div class="container">
@@ -437,13 +437,29 @@
                     <div class="weapons-grid">
                         <div class="weapon-column">
                             <label>Tipo</label>
-                            <input type="text" name="weapon-type[]">
-                            
+                            <select name="weapon-type[]">
+                                <option value="">Selecione o tipo de arma</option>
+                                <option value="Adagas Duplas">Adagas Duplas</option>
+                                <option value="Chain Blades">Chain Blades</option>
+                                <option value="Espada + Escudo">Espada + Escudo</option>
+                                <option value="Espadas Gêmeas">Espadas Gêmeas</option>
+                                <option value="Manoplas">Manoplas</option>
+                                <option value="Claymore">Claymore</option>
+                                <option value="Glaive">Glaive</option>
+                                <option value="Lâmina Curva">Lâmina Curva</option>
+                                <option value="Machadão">Machadão</option>
+                                <option value="Marretão">Marretão</option>
+                                <option value="Cajado">Cajado</option>
+                                <option value="Grimório">Grimório</option>
+                                <option value="Espada Mágica">Espada Mágica</option>
+                                <option value="Lâmina Flutuante">Lâmina Flutuante</option>
+                                <option value="Arco Curto">Arco Curto</option>
+                                <option value="Arco Longo">Arco Longo</option>
+                            </select>
                         </div>
                         <div class="weapon-column">
                             <label>Geração</label>
                             <input type="text" name="weapon-generation[]">
-                            
                         </div>
                         <div class="weapon-column">
                             <label>Elemento</label>
@@ -458,22 +474,18 @@
                                 <option value="raio">Raio</option>
                                 <option value="gelo">Gelo</option>
                             </select>
-                            
                         </div>
                         <div class="weapon-column">
                             <label>Dano</label>
                             <input type="text" name="weapon-damage[]">
-                            
                         </div>
                         <div class="weapon-column">
                             <label>DEF</label>
                             <input type="text" name="weapon-def[]">
-                            
                         </div>
                         <div class="weapon-column">
                             <label>Move</label>
                             <input type="text" name="weapon-move[]">
-                            
                         </div>
                     </div>
                     <button id="add-weapon">Adicionar Arma</button>
@@ -525,94 +537,39 @@
 
         <section class="cycle-abilities">
             <h2>Habilidades de Ciclo 1</h2>
-            <div class="abilities-grid">
-                <div class="ability-column">
-                    <label>Tipo</label>
-                    <input type="text" name="cycle1-type[]">
-                </div>
-                <div class="ability-column">
-                    <label>Magia/Habilidade</label>
-                    <input type="text" name="cycle1-name[]">
-                </div>
-                <div class="ability-column">
-                    <label>Ação</label>
-                    <input type="text" name="cycle1-action[]">
-                </div>
-                <div class="ability-column">
-                    <label>Recurso</label>
-                    <input type="text" name="cycle1-resource[]">
-                </div>
-                <div class="ability-column">
-                    <label>Duração</label>
-                    <input type="text" name="cycle1-duration[]">
-                </div>
-                <div class="ability-column">
-                    <label>Efeito 1</label>
-                    <input type="text" name="cycle1-effect1[]">
-                </div>
-                <div class="ability-column">
-                    <label>Efeito 2</label>
-                    <input type="text" name="cycle1-effect2[]">
-                </div>
-                <div class="ability-column">
-                    <label>Alcance</label>
-                    <input type="text" name="cycle1-range[]">
-                </div>
-                <div class="ability-column">
-                    <label>MP</label>
-                    <input type="text" name="cycle1-mp[]">
-                </div>
-                <div class="ability-column">
-                    <label>SP</label>
-                    <input type="text" name="cycle1-sp[]">
-                </div>
+            <div class="button-container">
+                <button onclick="window.location.href='skils.html'">Ir para Habilidades</button>
             </div>
-            <button id="add-cycle1-ability" onclick="window.location.href='skils.html'">Adicionar Habilidade de Ciclo 1</button>
+            <style>
+                .button-container {
+                    display: flex;
+                    justify-content: center;
+                    margin: 20px 0;
+                }
+                .button-container button {
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #4CAF50;
+                    color: white;
+                    transition: background-color 0.3s ease;
+                }
+                .button-container button:hover {
+                    background-color: #45a049;
+                }
+            </style>
+            <div class="abilities-grid" id="cycle1-abilities-grid">
+                <!-- As habilidades selecionadas serão adicionadas aqui dinamicamente -->
+            </div>
         </section>
         <section class="cycle-abilities">
             <h2>Habilidades de Ciclo 2</h2>
             <div class="abilities-grid">
                 <div class="ability-column">
                     <label>Tipo</label>
-                    <input type="text" name="cycle2-type[]">
-                </div>
-                <div class="ability-column">
-                    <label>Magia/Habilidade</label>
-                    <input type="text" name="cycle2-name[]">
-                </div>
-                <div class="ability-column">
-                    <label>Ação</label>
-                    <input type="text" name="cycle2-action[]">
-                </div>
-                <div class="ability-column">
-                    <label>Recurso</label>
-                    <input type="text" name="cycle2-resource[]">
-                </div>
-                <div class="ability-column">
-                    <label>Duração</label>
-                    <input type="text" name="cycle2-duration[]">
-                </div>
-                <div class="ability-column">
-                    <label>Efeito 1</label>
-                    <input type="text" name="cycle2-effect1[]">
-                </div>
-                <div class="ability-column">
-                    <label>Efeito 2</label>
-                    <input type="text" name="cycle2-effect2[]">
-                </div>
-                <div class="ability-column">
-                    <label>Alcance</label>
-                    <input type="text" name="cycle2-range[]">
-                </div>
-                <div class="ability-column">
-                    <label>MP</label>
-                    <input type="text" name="cycle2-mp[]">
-                </div>
-                <div class="ability-column">
-                    <label>SP</label>
-                    <input type="text" name="cycle2-sp[]">
-                </div>
-            </div>
+
             <button id="add-cycle2-ability">Adicionar Habilidade de Ciclo 2</button>
         </section>
 
@@ -623,9 +580,6 @@
         <script src="./js/scriptArma.js"></script>
         <script src="./js/status.js"></script>
         <script src="./js/skils.js"></script>
-        <script src="./js/mochila.js"></script>
-        <script src="./js/saveImage.js"></script>
-        
-    </div>
+        <script src="./js/selections.js"></script>
 </body>
 </html>
