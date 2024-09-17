@@ -440,3 +440,20 @@ button:hover {
         flex: 1 0 100%;
     }
 }
+
+.remover-item {
+    color: red;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px 6px;
+    border: 1px solid red;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+}
+
+.remover-item:hover {
+    background-color: red;
+    color: white;
+}

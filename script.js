@@ -197,6 +197,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 armorsContainer.appendChild(armorGrid);
             });
 
+            // Carregar a imagem de perfil
+            const imagePreview = document.getElementById('profile-image-preview');
+            if (ficha.profileImage) {
+                imagePreview.src = ficha.profileImage;
+                imagePreview.style.display = 'block';
+                document.querySelector('.upload-area').style.display = 'none';
+                document.getElementById('change-image').style.display = 'block';
+            } else {
+                imagePreview.style.display = 'none';
+                document.querySelector('.upload-area').style.display = 'flex';
+                document.getElementById('change-image').style.display = 'none';
+            }
+
             atualizarElementoOwlin();
             console.log('Ficha carregada com sucesso!');
         } else {
@@ -260,3 +273,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ... resto do código ...
 });
+
+window.addEventListener('message', function(event) {
+    if (event.data.type === 'addCycle1Skill') {
+        addCycle1Skill(event.data.data);
+    }
+});
+
+function addCycle1Skill(skillData) {
+    const cycle1Grid = document.querySelector('.cycle-abilities:nth-of-type(1) .abilities-grid');
+    
+    // Cria uma nova linha para a habilidade
+    const newRow = document.createElement('div');
+    newRow.className = 'ability-row';
+    
+    // Adiciona os campos da habilidade
+    newRow.innerHTML = `
+        <div class="ability-column">
+            <input type="text" name="cycle1-type[]" value="${skillData.type}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-name[]" value="${skillData.name}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-action[]" value="${skillData.action}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-resource[]" value="${skillData.resource}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-duration[]" value="${skillData.duration}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-effect1[]" value="${skillData.effect1}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-effect2[]" value="${skillData.effect2}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-range[]" value="${skillData.range}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-mp[]" value="${skillData.mp || ''}">
+        </div>
+        <div class="ability-column">
+            <input type="text" name="cycle1-sp[]" value="${skillData.sp || ''}">
+        </div>
+    `;
+    
+    cycle1Grid.appendChild(newRow);
+}

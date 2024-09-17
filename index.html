@@ -24,6 +24,7 @@
                 <h2>Imagem de Perfil</h2>
                 <div class="image-preview">
                     <img id="profile-image-preview" src="#" alt="Imagem de perfil">
+                    <span id="remove-image" style="position: absolute; top: 5px; right: 5px; color: red; cursor: pointer; font-weight: bold;">&times;</span>
                     <div class="upload-area">
                         <input type="file" id="profile-image-upload" accept="image/*">
                         <label for="profile-image-upload" class="upload-button">
@@ -72,6 +73,13 @@
                     if (event.target == document.getElementById('tabelaPopup')) {
                         document.getElementById('tabelaPopup').style.display = 'none';
                     }
+                });
+
+                document.getElementById('remove-image').addEventListener('click', function() {
+                    document.getElementById('profile-image-preview').src = '#';
+                    document.getElementById('profile-image-preview').style.display = 'none';
+                    document.querySelector('.upload-area').style.display = 'block';
+                    localStorage.removeItem('profileImage');
                 });
             </script>
 
@@ -616,6 +624,7 @@
         <script src="status.js"></script>
         <script src="skils.js"></script>
         <script src="mochila.js"></script>
+        <script src="saveImage.js"></script>
         
     </div>
 </body>

@@ -63,7 +63,29 @@
     </style>
 </head>
 <body>
-    
+    <div class="button-container">
+        <button onclick="window.location.href='index.html'">Voltar ao Índice</button>
+    </div>
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
     <section class="cycle-magic">
         <h2>Ciclo 1 - Mágico</h2>
         <table class="magic-table">
