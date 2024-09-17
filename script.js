@@ -143,70 +143,60 @@ document.addEventListener('DOMContentLoaded', function() {
             // Carregar Atributos
             for (let attr in ficha.atributos) {
                 document.getElementById(`${attr}-base`).value = ficha.atributos[attr].base || '';
-document.addEventListener('DOMContentLoaded', function() {
-    // Funções existentes
-    const raceSelect = document.getElementById('race');
-    const owlinElementGroup = document.getElementById('owlin-element-group');
-    const elementSelect = document.getElementById('element');
+                document.getElementById(`${attr}-score`).value = ficha.atributos[attr].score || '';
+                document.getElementById(`${attr}-mod`).value = ficha.atributos[attr].mod || '';
+            }
 
-    function atualizarElementoOwlin() {
-        if (raceSelect.value === 'owlin') {
-            owlinElementGroup.style.display = 'block';
-            elementSelect.style.display = 'block';
-        } else {
-            owlinElementGroup.style.display = 'none';
-            elementSelect.style.display = 'block';
-        }
-    }
+            // Carregar Perícias
+            const skillsTable = document.getElementById('skills-table').getElementsByTagName('tbody')[0];
+            ficha.pericias.forEach((pericia, index) => {
+                if (skillsTable.rows[index]) {
+                    const row = skillsTable.rows[index];
+                    row.querySelector('input[name$="-roll"]').value = pericia.roll || '';
+                    row.querySelector('input[name$="-attributes"]').value = pericia.attributes || '';
+                    row.querySelector('input[name$="-training"]').value = pericia.training || '';
+                    row.querySelector('input[name$="-others"]').value = pericia.others || '';
+                }
+            });
 
-    raceSelect.addEventListener('change', atualizarElementoOwlin);
-    atualizarElementoOwlin();
+            // Carregar Armas
+            const weaponsContainer = document.querySelector('.weapons-container');
+            weaponsContainer.innerHTML = ''; // Limpa as armas existentes
+            ficha.armas.forEach(arma => {
+                const weaponGrid = document.createElement('div');
+                weaponGrid.className = 'weapons-grid';
+                weaponGrid.innerHTML = `
+                    <input type="text" name="weapon-type[]" value="${arma.tipo || ''}">
+                    <input type="text" name="weapon-generation[]" value="${arma.geracao || ''}">
+                    <select name="weapon-element[]">
+                        <option value="${arma.elemento || ''}" selected>${arma.elemento || ''}</option>
+                    </select>
+                    <input type="text" name="weapon-damage[]" value="${arma.dano || ''}">
+                    <input type="text" name="weapon-def[]" value="${arma.def || ''}">
+                    <input type="text" name="weapon-move[]" value="${arma.move || ''}">
+                `;
+                weaponsContainer.appendChild(weaponGrid);
+            });
 
-    // Função para mudar cor de fundo
-    const botaoMudarCor = document.getElementById('mudarCorFundo');
-    let corFundoBranca = true;
-    
-    botaoMudarCor.addEventListener('click', function() {
-        if (corFundoBranca) {
-            document.body.style.backgroundColor = "#000000";
-            corFundoBranca = false;
-        } else {
-            document.body.style.backgroundColor = "#FFFFFF";
-            corFundoBranca = true;
-        }
-        localStorage.setItem('corFundo', corFundoBranca ? 'branco' : 'preto');
-    });
+            // Carregar Armaduras
+            const armorsContainer = document.querySelector('.armors-container');
+            armorsContainer.innerHTML = ''; // Limpa as armaduras existentes
+            ficha.armaduras.forEach(armadura => {
+                const armorGrid = document.createElement('div');
+                armorGrid.className = 'armors-grid';
+                armorGrid.innerHTML = `
+                    <input type="text" name="armor-type[]" value="${armadura.tipo || ''}">
+                    <input type="text" name="armor-generation[]" value="${armadura.geracao || ''}">
+                    <input type="text" name="armor-ca[]" value="${armadura.ca || ''}">
+                    <input type="text" name="armor-move[]" value="${armadura.move || ''}">
+                    <select name="armor-element[]">
+                        <option value="${armadura.elemento || ''}" selected>${armadura.elemento || ''}</option>
+                    </select>
+                `;
+                armorsContainer.appendChild(armorGrid);
+            });
 
-    // Funções para salvar e carregar ficha
-    function salvarFicha() {
-        const ficha = {
-            playerName: document.getElementById('player-name').value,
-            characterName: document.getElementById('character-name').value,
-            class: document.getElementById('class').value,
-            race: document.getElementById('race').value,
-            element: document.getElementById('element').value,
-            owlinElement: document.getElementById('owlin-element').value,
-            level: document.getElementById('level').value,
-            // Adicione mais campos conforme necessário
-        };
-
-        localStorage.setItem('fichaRPG', JSON.stringify(ficha));
-        alert('Ficha salva com sucesso!');
-    }
-
-    function carregarFicha() {
-        const fichaString = localStorage.getItem('fichaRPG');
-        if (fichaString) {
-            const ficha = JSON.parse(fichaString);
-            document.getElementById('player-name').value = ficha.playerName || '';
-            document.getElementById('character-name').value = ficha.characterName || '';
-            document.getElementById('class').value = ficha.class || '';
-            document.getElementById('race').value = ficha.race || '';
-            document.getElementById('element').value = ficha.element || '';
-            document.getElementById('owlin-element').value = ficha.owlinElement || '';
-            document.getElementById('level').value = ficha.level || '';
-            // Atualize mais campos conforme necessário
-            atualizarElementoOwlin(); // Atualiza a visibilidade do elemento Owlin
+            atualizarElementoOwlin();
             console.log('Ficha carregada com sucesso!');
         } else {
             console.log('Nenhuma ficha salva encontrada.');
