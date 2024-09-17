@@ -225,3 +225,47 @@ button:hover {
 .upload-button i {
     margin-right: 5px;
 }
+
+.abilities-container {
+    margin-top: 20px;
+}
+
+.abilities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ability-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 100px;
+}
+
+.ability-column label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.ability-column input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#add-cycle1-ability, #add-cycle2-ability {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#add-cycle1-ability:hover, #add-cycle2-ability:hover {
+    background-color: #45a049;
+}

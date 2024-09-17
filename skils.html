@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades e Magias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .magic-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .magic-table th, .magic-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .magic-table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        .magic-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .magic-table input[type="text"],
+        .magic-table input[type="number"],
+        .magic-table textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .magic-table input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+        #add-magic-row {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #add-magic-row:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href='index.html'" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 4px;">Voltar para a Página Inicial</button>
+    <section class="cycle-magic">
+        <h2>Ciclo 1 - Mágico</h2>
+        <table class="magic-table">
+            <thead>
+                <tr>
+                    <th>Check</th>
+                    <th>Requisito INT</th>
+                    <th>Tipo</th>
+                    <th>Magia</th>
+                    <th>Ação</th>
+                    <th>Recurso</th>
+                    <th>Duração</th>
+                    <th>Efeito 1</th>
+                    <th>Efeito 2</th>
+                    <th>Alcance</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="magic-1">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-1')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Energia Elemental"></td>
+                    <td><input type="text" name="magic-action[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-resource[]" value="MP"></td>
+                    <td><input type="text" name="magic-duration[]" value="Instantâneo"></td>
+                    <td><input type="text" name="magic-effect1[]" value="3d8+mod dano"></td>
+                    <td><input type="text" name="magic-effect2[]" value="Efeito Elemen."></td>
+                    <td><input type="text" name="magic-range[]" value="Move"></td>
+                    <td><textarea name="magic-description[]" rows="2">Causa (3d8+mod) aplica o efeito do elemento utilizado.</textarea></td>
+                </tr>
+                <tr id="magic-2">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-2')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Onda de Vida"></td>
+                    <td><input type="text" name="magic-action[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-resource[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-duration[]" value="instantâneo"></td>
+                    <td><input type="text" name="magic-effect1[]" value="2d4+mod cura"></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="Move/2"></td>
+                    <td><textarea name="magic-description[]" rows="2">Cura 2d4+mod</textarea></td>
+                </tr>
+                <tr id="magic-3">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-3')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Armadura Arcana"></td>
+                    <td><input type="text" name="magic-action[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-resource[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-duration[]" value="Concentração"></td>
+                    <td><input type="text" name="magic-effect1[]" value="+2CA"></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="Move/2"></td>
+                    <td><textarea name="magic-description[]" rows="2">Aumenta a defesa do alvo. (+2CA, stacka com armadura)</textarea></td>
+                </tr>
+                <tr id="magic-4">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-4')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="5"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Clarear"></td>
+                    <td><input type="text" name="magic-action[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-resource[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-duration[]" value="concentração"></td>
+                    <td><input type="text" name="magic-effect1[]" value="Cria Luz"></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="15m"></td>
+                    <td><textarea name="magic-description[]" rows="2">Cria uma orb de luz que ilumina como uma tocha da cor do seu elemento. (short, 15m)</textarea></td>
+                </tr>
+                <tr id="magic-5">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-5')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Bless lv 1"></td>
+                    <td><input type="text" name="magic-action[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-resource[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-duration[]" value="instantâneo"></td>
+                    <td><input type="text" name="magic-effect1[]" value="+1 Acerto"></td>
+                    <td><input type="text" name="magic-effect2[]" value="Dura Combate"></td>
+                    <td><input type="text" name="magic-range[]" value="Move/2"></td>
+                    <td><textarea name="magic-description[]" rows="2">Fornece bônus de acerto. (+1) (duração: combate)</textarea></td>
+                </tr>
+                <tr id="magic-6">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-6')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="5"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Proteção elemental"></td>
+                    <td><input type="text" name="magic-action[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-resource[]" value="Padrão"></td>
+                    <td><input type="text" name="magic-duration[]" value="concentração"></td>
+                    <td><input type="text" name="magic-effect1[]" value="Vantagem Res."></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="Move/2"></td>
+                    <td><textarea name="magic-description[]" rows="2">Alvo recebe bônus em testes de resistência. (Vantagem)</textarea></td>
+                </tr>
+                <tr id="magic-7">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-7')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="5"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Visão Mística"></td>
+                    <td><input type="text" name="magic-action[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-resource[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-duration[]" value="instantâneo"></td>
+                    <td><input type="text" name="magic-effect1[]" value="Visão Seres"></td>
+                    <td><input type="text" name="magic-effect2[]" value="Visão Elemental"></td>
+                    <td><input type="text" name="magic-range[]" value="30m"></td>
+                    <td><textarea name="magic-description[]" rows="2">Você pode ver auras Elementais e seres próximos. (Range médio (30m)</textarea></td>
+                </tr>
+                <tr id="magic-8">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-8')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Queda Suave"></td>
+                    <td><input type="text" name="magic-action[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-resource[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-duration[]" value="concentração"></td>
+                    <td><input type="text" name="magic-effect1[]" value="Queda Lenta"></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="5m"></td>
+                    <td><textarea name="magic-description[]" rows="2">Alvo cai lentamente. AoE, Alvo precisa querer receber o buff</textarea></td>
+                </tr>
+                <tr id="magic-9">
+                    <td><input type="checkbox" name="magic-check[]" onchange="updateCycle1Skills(this, 'magic-9')"></td>
+                    <td><input type="number" name="magic-int-req[]" min="0" value="10"></td>
+                    <td><input type="text" name="magic-type[]" value="Mágico"></td>
+                    <td><input type="text" name="magic-name[]" value="Link Mental"></td>
+                    <td><input type="text" name="magic-action[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-resource[]" value="Bônus/Livre"></td>
+                    <td><input type="text" name="magic-duration[]" value="instantâneo"></td>
+                    <td><input type="text" name="magic-effect1[]" value="Env/Rec Msg"></td>
+                    <td><input type="text" name="magic-effect2[]" value="--------"></td>
+                    <td><input type="text" name="magic-range[]" value="Move/2"></td>
+                    <td><textarea name="magic-description[]" rows="2">Permite conectar mentalmente a outra pessoa, enviar e receber uma mensagem</textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="add-magic-row">Adicionar Magia</button>
+    </section>
+
+    <script>
+        document.getElementById('add-magic-row').addEventListener('click', function() {
+            const tbody = document.querySelector('.magic-table tbody');
+            const newRow = tbody.rows[0].cloneNode(true);
+            
+            // Limpar os valores dos inputs na nova linha
+            newRow.querySelectorAll('input, textarea').forEach(input => input.value = '');
+            
+            tbody.appendChild(newRow);
+        });
+
+        function updateCycle1Skills(checkbox, magicId) {
+            const magicRow = document.getElementById(magicId);
+            const magicName = magicRow.querySelector('input[name="magic-name[]"]').value;
+            const magicEffect = magicRow.querySelector('input[name="magic-effect1[]"]').value;
+            
+            // Enviar mensagem para a página principal
+            window.parent.postMessage({
+                type: 'updateCycle1Skills',
+                checked: checkbox.checked,
+                name: magicName,
+                effect: magicEffect
+            }, '*');
+        }
+    </script>
+</body>
+</html>
