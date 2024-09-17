@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const imageData = e.target.result;
-                // Salvar a imagem no localStorage
-                localStorage.setItem('profileImage', imageData);
+                // Salvar a imagem no cache
+                caches.open('profile-image-cache').then(function(cache) {
+                    cache.put('profileImage', new Response(imageData));
+                });
                 // Atualizar a visualização da imagem
                 updateImagePreview(imageData);
             };
@@ -35,10 +37,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Carregar a imagem salva ao iniciar a página
     function loadSavedImage() {
-        const savedImage = localStorage.getItem('profileImage');
-        if (savedImage) {
-            updateImagePreview(savedImage);
-        }
+        caches.open('profile-image-cache').then(function(cache) {
+            cache.match('profileImage').then(function(response) {
+                if (response) {
+                    response.blob().then(function(blob) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            updateImagePreview(e.target.result);
+                        };
+                        reader.readAsDataURL(blob);
+                    });
+                }
+            });
+        });
     }
 
     // Chamar a função para carregar a imagem salva
