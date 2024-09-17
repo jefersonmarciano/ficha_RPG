@@ -323,3 +323,43 @@ function addCycle1Skill(skillData) {
     
     cycle1Grid.appendChild(newRow);
 }
+// Função para atualizar o valor do status
+document.addEventListener('DOMContentLoaded', function() {
+    const statusInputs = document.querySelectorAll('.input-with-buttons input');
+    const buttons = document.querySelectorAll('.decrease-btn, .increase-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            const currentValue = parseInt(input.value) || 0;
+            
+            if (this.classList.contains('decrease-btn')) {
+                input.value = Math.max(0, currentValue - 1);
+            } else {
+                input.value = currentValue + 1;
+            }
+
+            updatePercentage(targetId);
+        });
+    });
+
+    statusInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            updatePercentage(this.id);
+        });
+    });
+
+    function updatePercentage(inputId) {
+        const statusType = inputId.split('-')[0]; // hp, mana, or stamina
+        const currentInput = document.getElementById(`${statusType}-current`);
+        const maxInput = document.querySelector(`input[name="${statusType}-max"]`);
+        const percentInput = document.querySelector(`input[name="${statusType}-percent"]`);
+
+        const currentValue = parseInt(currentInput.value) || 0;
+        const maxValue = parseInt(maxInput.value) || 1; // Evita divisão por zero
+
+        const percentage = Math.round((currentValue / maxValue) * 100);
+        percentInput.value = Math.min(100, Math.max(0, percentage)); // Garante que o valor esteja entre 0 e 100
+    }
+});
