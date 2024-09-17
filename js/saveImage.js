@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageUpload = document.getElementById('profile-image-upload');
     const imagePreview = document.getElementById('profile-image-preview');
     const uploadArea = document.querySelector('.upload-area');
-    const changeImageButton = document.getElementById('change-image');
+    const removeImageButton = document.getElementById('remove-image');
+
+    // Carregar imagem salva ao iniciar a página
+    loadSavedImage();
 
     // Função para lidar com o upload da imagem
     function handleImageUpload(event) {
@@ -11,10 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const imageData = e.target.result;
-                // Salvar a imagem no cache
-                caches.open('profile-image-cache').then(function(cache) {
-                    cache.put('profileImage', new Response(imageData));
-                });
+                // Salvar a imagem no localStorage
+                localStorage.setItem('profileImage', imageData);
                 // Atualizar a visualização da imagem
                 updateImagePreview(imageData);
             };
@@ -27,7 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
         imagePreview.src = imageData;
         imagePreview.style.display = 'block';
         uploadArea.style.display = 'none';
-        changeImageButton.style.display = 'block';
+        removeImageButton.style.display = 'block';
+    }
+
+    // Função para carregar a imagem salva
+    function loadSavedImage() {
+        const savedImage = localStorage.getItem('profileImage');
+        if (savedImage) {
+            updateImagePreview(savedImage);
+        }
+    }
+
+    // Função para remover a imagem
+    function removeImage() {
+        localStorage.removeItem('profileImage');
+        imagePreview.src = '#';
+        imagePreview.style.display = 'none';
+        uploadArea.style.display = 'block';
+        removeImageButton.style.display = 'none';
     }
 
     // Adicionar evento de mudança ao input de arquivo
@@ -35,30 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
         imageUpload.addEventListener('change', handleImageUpload);
     }
 
-    // Carregar a imagem salva ao iniciar a página
-    function loadSavedImage() {
-        caches.open('profile-image-cache').then(function(cache) {
-            cache.match('profileImage').then(function(response) {
-                if (response) {
-                    response.blob().then(function(blob) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            updateImagePreview(e.target.result);
-                        };
-                        reader.readAsDataURL(blob);
-                    });
-                }
-            });
-        });
-    }
-
-    // Chamar a função para carregar a imagem salva
-    loadSavedImage();
-
-    // Adicionar evento para o botão de trocar imagem
-    if (changeImageButton) {
-        changeImageButton.addEventListener('click', function() {
-            imageUpload.click();
-        });
+    // Adicionar evento para o botão de remover imagem
+    if (removeImageButton) {
+        removeImageButton.addEventListener('click', removeImage);
     }
 });
