@@ -10,30 +10,115 @@
 <body>
     <div class="container">
         <h1>Ficha de Personagem RPG</h1>
-        <button id="mudarCorFundo">Alternar Cor de Fundo</button>
+        
 
         
         
         <div class="button-container" id="button-container">
+            <button id="mudarCorFundo">Alternar Cor de Fundo</button>
             <button id="saveButton">Salvar Ficha</button>
-            <button id="loadButton">Carregar Ficha</button>
+            
         </div>
-        <div class="profile-image-container">
-            <h2>Imagem de Perfil</h2>
-            <div class="image-preview">
-                <img id="profile-image-preview" src="#" alt="Imagem de perfil">
-                <div class="upload-area">
-                    <input type="file" id="profile-image-upload" accept="image/*">
-                    <label for="profile-image-upload" class="upload-button">
-                        <i class="fas fa-plus"></i>
-                        Escolher Imagem
-                    </label>
+        <div class="profile-info-container">
+            <div class="profile-image-container">
+                <h2>Imagem de Perfil</h2>
+                <div class="image-preview">
+                    <img id="profile-image-preview" src="#" alt="Imagem de perfil">
+                    <div class="upload-area">
+                        <input type="file" id="profile-image-upload" accept="image/*">
+                        <label for="profile-image-upload" class="upload-button">
+                            <i class="fas fa-plus"></i>
+                            Escolher Imagem
+                        </label>
+                    </div>
+                </div>
+            <button id="mostrarTabela">Mochila</button>
+
+            <div id="tabelaPopup" class="popup">
+                <div class="popup-conteudo">
+                    <span class="fechar">&times;</span>
+                    <h2>Dentro da mochila</h2>
+                    <table id="tabelaItens">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th>Descrição</th>
+                                <th>Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" value="Item"></td>
+                                <td><input type="text" value="Quantidade"></td>
+                                <td><input type="text" value="Descrição"></td>
+                                <td><span class="remover-item">X</span></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" value="Item"></td>
+                                <td><input type="text" value="Quantidade"></td>
+                                <td><input type="text" value="Descrição"></td>
+                                <td><span class="remover-item">X</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button id="adicionarItem">Adicionar Item</button>
                 </div>
             </div>
-        </div>
 
-        
-        <div class="main-info-container">
+            <style>
+                .popup {
+                    display: none;
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0,0,0,0.4);
+                }
+
+                .popup-conteudo {
+                    background-color: #fefefe;
+                    margin: 15% auto;
+                    padding: 20px;
+                    border: 1px solid #888;
+                    width: 80%;
+                    max-width: 600px;
+                }
+
+                .fechar {
+                    color: #aaa;
+                    float: right;
+                    font-size: 28px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+
+                .fechar:hover,
+                .fechar:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+                .remover-item {
+                    cursor: pointer;
+                    color: red;
+                    font-weight: bold;
+                }
+
+                #tabelaItens input[type="text"] {
+                    width: 100%;
+                    box-sizing: border-box;
+                    border: none;
+                    background-color: transparent;
+                }
+            </style>
+
+            
+            </div>
             <div class="section basic-info">
                 <h2>Informações Básicas</h2>
                 <div class="form-grid">
@@ -107,6 +192,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="main-info-container">
+            
 
             <div class="section status">
                 <h2>Status</h2>
@@ -114,427 +203,463 @@
                     <div class="status-item">
                         <label>Vida</label>
                         <div class="status-inputs">
-                            <input type="number" name="hp-max" placeholder="Máxima">
-                            <input type="number" name="hp-current" placeholder="Atual">
-                            <input type="number" name="hp-percent" placeholder="%" max="100" >
+                            <div class="input-group">
+                                <p>HP máximo</p>
+                                <input type="number" name="hp-max" placeholder="Máxima">
+                            </div>
+                            <div class="input-group">
+                                <p>HP atual</p>
+                                <input type="number" name="hp-current" placeholder="Atual">
+                            </div>
+                            <div class="input-group">
+                                <p>%</p>
+                                <input type="number" name="hp-percent" placeholder="%" max="100">
+                            </div>
                         </div>
                     </div>
                     <div class="status-item">
                         <label>Mana</label>
                         <div class="status-inputs">
-                            <input type="number" name="mana-max" placeholder="Máxima">
-                            <input type="number" name="mana-current" placeholder="Atual">
-                            <input type="number" name="mana-percent" placeholder="%" max="100">
+                            <div class="input-group">
+                                <p>Mana máximo</p>
+                                <input type="number" name="mana-max" placeholder="Máxima">
+                            </div>
+                            <div class="input-group">
+                                <p>Mana atual</p>
+                                <input type="number" name="mana-current" placeholder="Atual">
+                            </div>
+                            <div class="input-group">
+                                <p>%</p>
+                                <input type="number" name="mana-percent" placeholder="%" max="100">
+                            </div>
                         </div>
                     </div>
                     <div class="status-item">
                         <label>Stamina</label>
                         <div class="status-inputs">
-                            <input type="number" name="stamina-max" placeholder="Máxima">
-                            <input type="number" name="stamina-current" placeholder="Atual">
-                            <input type="number" name="stamina-percent" placeholder="%" max="100">
+                            <div class="input-group">
+                                <p>Stamina máximo</p>
+                                <input type="number" name="stamina-max" placeholder="Máxima">
+                            </div>
+                            <div class="input-group">
+                                <p>Stamina atual</p>
+                                <input type="number" name="stamina-current" placeholder="Atual">
+                            </div>
+                            <div class="input-group">
+                                <p>%</p>
+                                <input type="number" name="stamina-percent" placeholder="%" max="100">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="section attributes">
+                <h2>Atributos</h2>
+                <table id="attributes-table">
+                    <thead>
+                        <tr>
+                            <th>Status Base</th>
+                            <th>Atributos</th>
+                            <th>Score</th>
+                            <th>MOD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" id="agility-base" name="agility-base" value="0"></td>
+                            <td>Agilidade</td>
+                            <td><input type="number" id="agility-score" name="agility-score" value="0"></td>
+                            <td><input type="number" id="agility-mod" name="agility-mod" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" id="constitution-base" name="constitution-base" value="0"></td>
+                            <td>Constituição</td>
+                            <td><input type="number" id="constitution-score" name="constitution-score" value="0"></td>
+                            <td><input type="number" id="constitution-mod" name="constitution-mod" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" id="strength-base" name="strength-base" value="0"></td>
+                            <td>Força</td>
+                            <td><input type="number" id="strength-score" name="strength-score" value="0"></td>
+                            <td><input type="number" id="strength-mod" name="strength-mod" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" id="intellect-base" name="intellect-base" value="0"></td>
+                            <td>Intelecto</td>
+                            <td><input type="number" id="intellect-score" name="intellect-score" value="0"></td>
+                            <td><input type="number" id="intellect-mod" name="intellect-mod" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" id="wisdom-base" name="wisdom-base" value="0"></td>
+                            <td>Perspicácia</td>
+                            <td><input type="number" id="wisdom-score" name="wisdom-score" value="0"></td>
+                            <td><input type="number" id="wisdom-mod" name="wisdom-mod" value="0"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" id="presence-base" name="presence-base" value="0"></td>
+                            <td>Presença</td>
+                            <td><input type="number" id="presence-score" name="presence-score" value="0"></td>
+                            <td><input type="number" id="presence-mod" name="presence-mod" value="0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>Atributos</h2>
-            <table id="attributes-table">
-                <thead>
-                    <tr>
-                        <th>Status Base</th>
-                        <th>Atributos</th>
-                        <th>Score</th>
-                        <th>MOD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="number" id="agility-base" name="agility-base" value="0"></td>
-                        <td>Agilidade</td>
-                        <td><input type="number" id="agility-score" name="agility-score" value="0"></td>
-                        <td><input type="number" id="agility-mod" name="agility-mod" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" id="constitution-base" name="constitution-base" value="0"></td>
-                        <td>Constituição</td>
-                        <td><input type="number" id="constitution-score" name="constitution-score" value="0"></td>
-                        <td><input type="number" id="constitution-mod" name="constitution-mod" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" id="strength-base" name="strength-base" value="0"></td>
-                        <td>Força</td>
-                        <td><input type="number" id="strength-score" name="strength-score" value="0"></td>
-                        <td><input type="number" id="strength-mod" name="strength-mod" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" id="intellect-base" name="intellect-base" value="0"></td>
-                        <td>Intelecto</td>
-                        <td><input type="number" id="intellect-score" name="intellect-score" value="0"></td>
-                        <td><input type="number" id="intellect-mod" name="intellect-mod" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" id="wisdom-base" name="wisdom-base" value="0"></td>
-                        <td>Perspicácia</td>
-                        <td><input type="number" id="wisdom-score" name="wisdom-score" value="0"></td>
-                        <td><input type="number" id="wisdom-mod" name="wisdom-mod" value="0"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" id="presence-base" name="presence-base" value="0"></td>
-                        <td>Presença</td>
-                        <td><input type="number" id="presence-score" name="presence-score" value="0"></td>
-                        <td><input type="number" id="presence-mod" name="presence-mod" value="0"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        
 
-        <div class="tab-content" id="skills">
-            <h2>Perícias</h2>
-            <table id="skills-table">
-                <thead>
-                    <tr>
-                        <th>Perícia</th>
-                        <th>Roll</th>
-                        <th>Atributos</th>
-                        <th>Treinamento</th>
-                        <th>Outros</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Atletismo</td>
-                        <td><input type="string" name="athletics-roll"></td>
-                        <td><input type="string" name="athletics-attributes"></td>
-                        <td><input type="number" name="athletics-training"></td>
-                        <td><input type="number" name="athletics-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Prestidigitação</td>
-                        <td><input type="string" name="sleightOfHand-roll"></td>
-                        <td><input type="string" name="sleightOfHand-attributes"></td>
-                        <td><input type="number" name="sleightOfHand-training"></td>
-                        <td><input type="number" name="sleightOfHand-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Luta/Briga</td>
-                        <td><input type="string" name="fighting-roll"></td>
-                        <td><input type="string" name="fighting-attributes"></td>
-                        <td><input type="number" name="fighting-training"></td>
-                        <td><input type="number" name="fighting-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Pontaria</td>
-                        <td><input type="string" name="shooting-roll"></td>
-                        <td><input type="string" name="shooting-attributes"></td>
-                        <td><input type="number" name="shooting-training"></td>
-                        <td><input type="number" name="shooting-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Magia (Cast)</td>
-                        <td><input type="string" name="magicCast-roll"></td>
-                        <td><input type="string" name="magicCast-attributes"></td>
-                        <td><input type="number" name="magicCast-training"></td>
-                        <td><input type="number" name="magicCast-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Reflexos</td>
-                        <td><input type="string" name="reflexes-roll"></td>
-                        <td><input type="string" name="reflexes-attributes"></td>
-                        <td><input type="number" name="reflexes-training"></td>
-                        <td><input type="number" name="reflexes-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Mana Sense</td>
-                        <td><input type="string" name="manaSense-roll"></td>
-                        <td><input type="string" name="manaSense-attributes"></td>
-                        <td><input type="number" name="manaSense-training"></td>
-                        <td><input type="number" name="manaSense-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Fortitude</td>
-                        <td><input type="string" name="fortitude-roll"></td>
-                        <td><input type="string" name="fortitude-attributes"></td>
-                        <td><input type="number" name="fortitude-training"></td>
-                        <td><input type="number" name="fortitude-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Vontade</td>
-                        <td><input type="string" name="willpower-roll"></td>
-                        <td><input type="string" name="willpower-attributes"></td>
-                        <td><input type="number" name="willpower-training"></td>
-                        <td><input type="number" name="willpower-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Sobrevivência</td>
-                        <td><input type="string" name="survival-roll"></td>
-                        <td><input type="string" name="survival-attributes"></td>
-                        <td><input type="number" name="survival-training"></td>
-                        <td><input type="number" name="survival-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Persuasão</td>
-                        <td><input type="string" name="persuasion-roll"></td>
-                        <td><input type="string" name="persuasion-attributes"></td>
-                        <td><input type="number" name="persuasion-training"></td>
-                        <td><input type="number" name="persuasion-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Diplomacia</td>
-                        <td><input type="string" name="diplomacy-roll"></td>
-                        <td><input type="string" name="diplomacy-attributes"></td>
-                        <td><input type="number" name="diplomacy-training"></td>
-                        <td><input type="number" name="diplomacy-others"></td>
-                    </tr>
-                    <tr>
-                        <td>História</td>
-                        <td><input type="string" name="history-roll"></td>
-                        <td><input type="string" name="history-attributes"></td>
-                        <td><input type="number" name="history-training"></td>
-                        <td><input type="number" name="history-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Arcana</td>
-                        <td><input type="string" name="arcana-roll"></td>
-                        <td><input type="string" name="arcana-attributes"></td>
-                        <td><input type="number" name="arcana-training"></td>
-                        <td><input type="number" name="arcana-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Intuição</td>
-                        <td><input type="string" name="insight-roll"></td>
-                        <td><input type="string" name="insight-attributes"></td>
-                        <td><input type="number" name="insight-training"></td>
-                        <td><input type="number" name="insight-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Percepção</td>
-                        <td><input type="string" name="perception-roll"></td>
-                        <td><input type="string" name="perception-attributes"></td>
-                        <td><input type="number" name="perception-training"></td>
-                        <td><input type="number" name="perception-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Stealth</td>
-                        <td><input type="string" name="stealth-roll"></td>
-                        <td><input type="string" name="stealth-attributes"></td>
-                        <td><input type="number" name="stealth-training"></td>
-                        <td><input type="number" name="stealth-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Loot</td>
-                        <td><input type="string" name="loot-roll"></td>
-                        <td><input type="string" name="loot-attributes"></td>
-                        <td><input type="number" name="loot-training"></td>
-                        <td><input type="number" name="loot-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Medicina</td>
-                        <td><input type="string" name="medicine-roll"></td>
-                        <td><input type="string" name="medicine-attributes"></td>
-                        <td><input type="number" name="medicine-training"></td>
-                        <td><input type="number" name="medicine-others"></td>
-                    </tr>
-                    <tr>
-                        <td>Concentração</td>
-                        <td><input type="string" name="concentration-roll"></td>
-                        <td><input type="string" name="concentration-attributes"></td>
-                        <td><input type="number" name="concentration-training"></td>
-                        <td><input type="number" name="concentration-others"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="skills-equipment-container">
+            <div class="skills-section">
+                <div class="tab-content" id="skills">
+                    <h2>Perícias</h2>
+                    <table id="skills-table">
+                        <thead>
+                            <tr>
+                                <th>Perícia</th>
+                                <th>Roll</th>
+                                <th>Atributos</th>
+                                <th>Treinamento</th>
+                                <th>Outros</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Atletismo</td>
+                                <td><input type="string" name="athletics-roll"></td>
+                                <td><input type="string" name="athletics-attributes"></td>
+                                <td><input type="number" name="athletics-training"></td>
+                                <td><input type="number" name="athletics-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Prestidigitação</td>
+                                <td><input type="string" name="sleightOfHand-roll"></td>
+                                <td><input type="string" name="sleightOfHand-attributes"></td>
+                                <td><input type="number" name="sleightOfHand-training"></td>
+                                <td><input type="number" name="sleightOfHand-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Luta/Briga</td>
+                                <td><input type="string" name="fighting-roll"></td>
+                                <td><input type="string" name="fighting-attributes"></td>
+                                <td><input type="number" name="fighting-training"></td>
+                                <td><input type="number" name="fighting-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Pontaria</td>
+                                <td><input type="string" name="shooting-roll"></td>
+                                <td><input type="string" name="shooting-attributes"></td>
+                                <td><input type="number" name="shooting-training"></td>
+                                <td><input type="number" name="shooting-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Magia (Cast)</td>
+                                <td><input type="string" name="magicCast-roll"></td>
+                                <td><input type="string" name="magicCast-attributes"></td>
+                                <td><input type="number" name="magicCast-training"></td>
+                                <td><input type="number" name="magicCast-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Reflexos</td>
+                                <td><input type="string" name="reflexes-roll"></td>
+                                <td><input type="string" name="reflexes-attributes"></td>
+                                <td><input type="number" name="reflexes-training"></td>
+                                <td><input type="number" name="reflexes-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Mana Sense</td>
+                                <td><input type="string" name="manaSense-roll"></td>
+                                <td><input type="string" name="manaSense-attributes"></td>
+                                <td><input type="number" name="manaSense-training"></td>
+                                <td><input type="number" name="manaSense-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Fortitude</td>
+                                <td><input type="string" name="fortitude-roll"></td>
+                                <td><input type="string" name="fortitude-attributes"></td>
+                                <td><input type="number" name="fortitude-training"></td>
+                                <td><input type="number" name="fortitude-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Vontade</td>
+                                <td><input type="string" name="willpower-roll"></td>
+                                <td><input type="string" name="willpower-attributes"></td>
+                                <td><input type="number" name="willpower-training"></td>
+                                <td><input type="number" name="willpower-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Sobrevivência</td>
+                                <td><input type="string" name="survival-roll"></td>
+                                <td><input type="string" name="survival-attributes"></td>
+                                <td><input type="number" name="survival-training"></td>
+                                <td><input type="number" name="survival-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Persuasão</td>
+                                <td><input type="string" name="persuasion-roll"></td>
+                                <td><input type="string" name="persuasion-attributes"></td>
+                                <td><input type="number" name="persuasion-training"></td>
+                                <td><input type="number" name="persuasion-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Diplomacia</td>
+                                <td><input type="string" name="diplomacy-roll"></td>
+                                <td><input type="string" name="diplomacy-attributes"></td>
+                                <td><input type="number" name="diplomacy-training"></td>
+                                <td><input type="number" name="diplomacy-others"></td>
+                            </tr>
+                            <tr>
+                                <td>História</td>
+                                <td><input type="string" name="history-roll"></td>
+                                <td><input type="string" name="history-attributes"></td>
+                                <td><input type="number" name="history-training"></td>
+                                <td><input type="number" name="history-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Arcana</td>
+                                <td><input type="string" name="arcana-roll"></td>
+                                <td><input type="string" name="arcana-attributes"></td>
+                                <td><input type="number" name="arcana-training"></td>
+                                <td><input type="number" name="arcana-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Intuição</td>
+                                <td><input type="string" name="insight-roll"></td>
+                                <td><input type="string" name="insight-attributes"></td>
+                                <td><input type="number" name="insight-training"></td>
+                                <td><input type="number" name="insight-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Percepção</td>
+                                <td><input type="string" name="perception-roll"></td>
+                                <td><input type="string" name="perception-attributes"></td>
+                                <td><input type="number" name="perception-training"></td>
+                                <td><input type="number" name="perception-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Stealth</td>
+                                <td><input type="string" name="stealth-roll"></td>
+                                <td><input type="string" name="stealth-attributes"></td>
+                                <td><input type="number" name="stealth-training"></td>
+                                <td><input type="number" name="stealth-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Loot</td>
+                                <td><input type="string" name="loot-roll"></td>
+                                <td><input type="string" name="loot-attributes"></td>
+                                <td><input type="number" name="loot-training"></td>
+                                <td><input type="number" name="loot-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Medicina</td>
+                                <td><input type="string" name="medicine-roll"></td>
+                                <td><input type="string" name="medicine-attributes"></td>
+                                <td><input type="number" name="medicine-training"></td>
+                                <td><input type="number" name="medicine-others"></td>
+                            </tr>
+                            <tr>
+                                <td>Concentração</td>
+                                <td><input type="string" name="concentration-roll"></td>
+                                <td><input type="string" name="concentration-attributes"></td>
+                                <td><input type="number" name="concentration-training"></td>
+                                <td><input type="number" name="concentration-others"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="equipment-section">
+                <section class="weapons">
+                    <h2>Armas</h2>
+                    <div class="weapons-grid">
+                        <div class="weapon-column">
+                            <label>Tipo</label>
+                            <input type="text" name="weapon-type[]">
+                            
+                        </div>
+                        <div class="weapon-column">
+                            <label>Geração</label>
+                            <input type="text" name="weapon-generation[]">
+                            
+                        </div>
+                        <div class="weapon-column">
+                            <label>Elemento</label>
+                            <select name="weapon-element[]">
+                                <option value="">Selecione</option>
+                                <option value="fogo">Fogo</option>
+                                <option value="agua">Água</option>
+                                <option value="terra">Terra</option>
+                                <option value="ar">Ar</option>
+                                <option value="luz">Luz</option>
+                                <option value="trevas">Trevas</option>
+                                <option value="raio">Raio</option>
+                                <option value="gelo">Gelo</option>
+                            </select>
+                            
+                        </div>
+                        <div class="weapon-column">
+                            <label>Dano</label>
+                            <input type="text" name="weapon-damage[]">
+                            
+                        </div>
+                        <div class="weapon-column">
+                            <label>DEF</label>
+                            <input type="text" name="weapon-def[]">
+                            
+                        </div>
+                        <div class="weapon-column">
+                            <label>Move</label>
+                            <input type="text" name="weapon-move[]">
+                            
+                        </div>
+                    </div>
+                    <button id="add-weapon">Adicionar Arma</button>
+                </section>
+                
+                <section class="armor">
+                    <h2>Armaduras</h2>
+                    <div class="armors-grid">
+                        <div class="armor-column">
+                            <label>Tipo</label>
+                            <input type="text" name="armor-type[]">
+                        </div>
+                        <div class="armor-column">
+                            <label>Geração</label>
+                            <input type="text" name="armor-generation[]">
+                        </div>
+                        <div class="armor-column">
+                            <label>CA</label>
+                            <input type="text" name="armor-ca[]">
+                        </div>
+                        <div class="armor-column">
+                            <label>Move</label>
+                            <input type="text" name="armor-move[]">
+                        </div>
+                        <div class="armor-column">
+                            <label>Elemento</label>
+                            <select name="armor-element[]">
+                                <option value="">Selecione</option>
+                                <option value="fogo">Fogo</option>
+                                <option value="agua">Água</option>
+                                <option value="terra">Terra</option>
+                                <option value="ar">Ar</option>
+                                <option value="luz">Luz</option>
+                                <option value="trevas">Trevas</option>
+                                <option value="raio">Raio</option>
+                                <option value="gelo">Gelo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="add-armor">Adicionar Armadura</button>
+                </section>
+            </div>
         </div>
 
         <div class="equipment-container">
-            <section class="weapons">
-                <h2>Armas</h2>
-                <div class="weapons-grid">
-                    <div class="weapon-column">
-                        <label>Tipo</label>
-                        <input type="text" name="weapon-type[]">
-                        
-                    </div>
-                    <div class="weapon-column">
-                        <label>Geração</label>
-                        <input type="text" name="weapon-generation[]">
-                        
-                    </div>
-                    <div class="weapon-column">
-                        <label>Elemento</label>
-                        <select name="weapon-element[]">
-                            <option value="">Selecione</option>
-                            <option value="fogo">Fogo</option>
-                            <option value="agua">Água</option>
-                            <option value="terra">Terra</option>
-                            <option value="ar">Ar</option>
-                            <option value="luz">Luz</option>
-                            <option value="trevas">Trevas</option>
-                            <option value="raio">Raio</option>
-                            <option value="gelo">Gelo</option>
-                        </select>
-                        
-                    </div>
-                    <div class="weapon-column">
-                        <label>Dano</label>
-                        <input type="text" name="weapon-damage[]">
-                        
-                    </div>
-                    <div class="weapon-column">
-                        <label>DEF</label>
-                        <input type="text" name="weapon-def[]">
-                        
-                    </div>
-                    <div class="weapon-column">
-                        <label>Move</label>
-                        <input type="text" name="weapon-move[]">
-                        
-                    </div>
-                </div>
-                <button id="add-weapon">Adicionar Arma</button>
-            </section>
             
-            <section class="armor">
-                <h2>Armaduras</h2>
-                <div class="armors-grid">
-                    <div class="armor-column">
-                        <label>Tipo</label>
-                        <input type="text" name="armor-type[]">
-                    </div>
-                    <div class="armor-column">
-                        <label>Geração</label>
-                        <input type="text" name="armor-generation[]">
-                    </div>
-                    <div class="armor-column">
-                        <label>CA</label>
-                        <input type="text" name="armor-ca[]">
-                    </div>
-                    <div class="armor-column">
-                        <label>Move</label>
-                        <input type="text" name="armor-move[]">
-                    </div>
-                    <div class="armor-column">
-                        <label>Elemento</label>
-                        <select name="armor-element[]">
-                            <option value="">Selecione</option>
-                            <option value="fogo">Fogo</option>
-                            <option value="agua">Água</option>
-                            <option value="terra">Terra</option>
-                            <option value="ar">Ar</option>
-                            <option value="luz">Luz</option>
-                            <option value="trevas">Trevas</option>
-                            <option value="raio">Raio</option>
-                            <option value="gelo">Gelo</option>
-                        </select>
-                    </div>
-                </div>
-                <button id="add-armor">Adicionar Armadura</button>
-            </section>
             
-        </div>
-        <div class="abilities-container">
-            <section class="cycle-abilities">
-                <h2>Habilidades de Ciclo 1</h2>
-                <div class="abilities-grid">
-                    <div class="ability-column">
-                        <label>Tipo</label>
-                        <input type="text" name="cycle1-type[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Magia/Habilidade</label>
-                        <input type="text" name="cycle1-name[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Ação</label>
-                        <input type="text" name="cycle1-action[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Recurso</label>
-                        <input type="text" name="cycle1-resource[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Duração</label>
-                        <input type="text" name="cycle1-duration[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Efeito 1</label>
-                        <input type="text" name="cycle1-effect1[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Efeito 2</label>
-                        <input type="text" name="cycle1-effect2[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Alcance</label>
-                        <input type="text" name="cycle1-range[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>MP</label>
-                        <input type="text" name="cycle1-mp[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>SP</label>
-                        <input type="text" name="cycle1-sp[]">
-                    </div>
-                </div>
-                <button id="add-cycle1-ability" onclick="window.location.href='skils.html'">Adicionar Habilidade de Ciclo 1</button>
-            </section>
-            <section class="cycle-abilities">
-                <h2>Habilidades de Ciclo 2</h2>
-                <div class="abilities-grid">
-                    <div class="ability-column">
-                        <label>Tipo</label>
-                        <input type="text" name="cycle2-type[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Magia/Habilidade</label>
-                        <input type="text" name="cycle2-name[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Ação</label>
-                        <input type="text" name="cycle2-action[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Recurso</label>
-                        <input type="text" name="cycle2-resource[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Duração</label>
-                        <input type="text" name="cycle2-duration[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Efeito 1</label>
-                        <input type="text" name="cycle2-effect1[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Efeito 2</label>
-                        <input type="text" name="cycle2-effect2[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>Alcance</label>
-                        <input type="text" name="cycle2-range[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>MP</label>
-                        <input type="text" name="cycle2-mp[]">
-                    </div>
-                    <div class="ability-column">
-                        <label>SP</label>
-                        <input type="text" name="cycle2-sp[]">
-                    </div>
-                </div>
-                <button id="add-cycle2-ability">Adicionar Habilidade de Ciclo 2</button>
-            </section>
-        
-            <!-- Repita a estrutura acima para Habilidades de Ciclo 2 -->
         </div>
 
+        <section class="cycle-abilities">
+            <h2>Habilidades de Ciclo 1</h2>
+            <div class="abilities-grid">
+                <div class="ability-column">
+                    <label>Tipo</label>
+                    <input type="text" name="cycle1-type[]">
+                </div>
+                <div class="ability-column">
+                    <label>Magia/Habilidade</label>
+                    <input type="text" name="cycle1-name[]">
+                </div>
+                <div class="ability-column">
+                    <label>Ação</label>
+                    <input type="text" name="cycle1-action[]">
+                </div>
+                <div class="ability-column">
+                    <label>Recurso</label>
+                    <input type="text" name="cycle1-resource[]">
+                </div>
+                <div class="ability-column">
+                    <label>Duração</label>
+                    <input type="text" name="cycle1-duration[]">
+                </div>
+                <div class="ability-column">
+                    <label>Efeito 1</label>
+                    <input type="text" name="cycle1-effect1[]">
+                </div>
+                <div class="ability-column">
+                    <label>Efeito 2</label>
+                    <input type="text" name="cycle1-effect2[]">
+                </div>
+                <div class="ability-column">
+                    <label>Alcance</label>
+                    <input type="text" name="cycle1-range[]">
+                </div>
+                <div class="ability-column">
+                    <label>MP</label>
+                    <input type="text" name="cycle1-mp[]">
+                </div>
+                <div class="ability-column">
+                    <label>SP</label>
+                    <input type="text" name="cycle1-sp[]">
+                </div>
+            </div>
+            <button id="add-cycle1-ability" onclick="window.location.href='skils.html'">Adicionar Habilidade de Ciclo 1</button>
+        </section>
+        <section class="cycle-abilities">
+            <h2>Habilidades de Ciclo 2</h2>
+            <div class="abilities-grid">
+                <div class="ability-column">
+                    <label>Tipo</label>
+                    <input type="text" name="cycle2-type[]">
+                </div>
+                <div class="ability-column">
+                    <label>Magia/Habilidade</label>
+                    <input type="text" name="cycle2-name[]">
+                </div>
+                <div class="ability-column">
+                    <label>Ação</label>
+                    <input type="text" name="cycle2-action[]">
+                </div>
+                <div class="ability-column">
+                    <label>Recurso</label>
+                    <input type="text" name="cycle2-resource[]">
+                </div>
+                <div class="ability-column">
+                    <label>Duração</label>
+                    <input type="text" name="cycle2-duration[]">
+                </div>
+                <div class="ability-column">
+                    <label>Efeito 1</label>
+                    <input type="text" name="cycle2-effect1[]">
+                </div>
+                <div class="ability-column">
+                    <label>Efeito 2</label>
+                    <input type="text" name="cycle2-effect2[]">
+                </div>
+                <div class="ability-column">
+                    <label>Alcance</label>
+                    <input type="text" name="cycle2-range[]">
+                </div>
+                <div class="ability-column">
+                    <label>MP</label>
+                    <input type="text" name="cycle2-mp[]">
+                </div>
+                <div class="ability-column">
+                    <label>SP</label>
+                    <input type="text" name="cycle2-sp[]">
+                </div>
+            </div>
+            <button id="add-cycle2-ability">Adicionar Habilidade de Ciclo 2</button>
+        </section>
+
+
+
+        <div class="abilities-container">
         <script src="script.js"></script>
         <script src="scriptArma.js"></script>
         <script src="status.js"></script>
         <script src="skils.js"></script>
+        <script src="mochila.js"></script>
         
     </div>
 </body>
