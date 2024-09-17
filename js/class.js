@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 passiveElement.textContent = raceInfo.passive;
             }
 
-            // Atualiza os modificadores (você precisa implementar esta função)
+            // Atualiza os modificadores
             updateModifiers();
         }
     });
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const baseValue = parseInt(document.getElementById(`${attr}-base`).value) || 0;
             const scoreValue = parseInt(document.getElementById(`${attr}-score`).value) || 0;
             const totalValue = baseValue + scoreValue;
-            const modifier = Math.floor((totalValue - 10) / 2);
+            const modifier = Math.floor(totalValue / 5);
             document.getElementById(`${attr}-mod`).value = modifier;
         });
     }
