@@ -415,11 +415,11 @@ button:hover {
 }
 
 .skills-section {
-    flex: 0 0 60%; /* Ajuste este valor para controlar a largura da seção de perícias */
+    flex: 0 0 50%; /* Ajuste este valor para controlar a largura da seção de perícias */
 }
 
 .equipment-section {
-    flex: 0 0 40%; /* Ajuste este valor para controlar a largura da seção de equipamentos */
+    flex: 0 0 50%; /* Ajuste este valor para controlar a largura da seção de equipamentos */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -509,4 +509,7 @@ button:hover {
 
 .increase-btn:hover {
     background-color: #45a049; /* Verde mais escuro no hover */
+}
+#weapon-bonus {
+  line-height: 1.4;
 }

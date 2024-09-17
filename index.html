@@ -23,8 +23,8 @@
             <div class="profile-image-container">
                 <h2>Imagem de Perfil</h2>
                 <div class="image-preview">
-                    <img id="profile-image-preview" src="#" alt="Imagem de perfil">
-                    <span id="remove-image" style="position: absolute; top: 5px; right: 5px; color: red; cursor: pointer; font-weight: bold;">&times;</span>
+                    <img id="profile-image-preview" src="#" alt="Imagem de perfil" style="display: none;">
+                    <span id="remove-image" style="position: absolute; top: 5px; right: 5px; color: red; cursor: pointer; font-weight: bold; display: none;">&times;</span>
                     <div class="upload-area">
                         <input type="file" id="profile-image-upload" accept="image/*">
                         <label for="profile-image-upload" class="upload-button">
@@ -449,24 +449,24 @@
                     <div class="weapons-grid">
                         <div class="weapon-column">
                             <label>Tipo</label>
-                            <select name="weapon-type[]">
+                            <select name="weapon-type[]" id="weapon-type">
                                 <option value="">Selecione o tipo de arma</option>
-                                <option value="Adagas Duplas">Adagas Duplas</option>
-                                <option value="Chain Blades">Chain Blades</option>
-                                <option value="Espada + Escudo">Espada + Escudo</option>
-                                <option value="Espadas Gêmeas">Espadas Gêmeas</option>
-                                <option value="Manoplas">Manoplas</option>
-                                <option value="Claymore">Claymore</option>
-                                <option value="Glaive">Glaive</option>
-                                <option value="Lâmina Curva">Lâmina Curva</option>
-                                <option value="Machadão">Machadão</option>
-                                <option value="Marretão">Marretão</option>
-                                <option value="Cajado">Cajado</option>
-                                <option value="Grimório">Grimório</option>
-                                <option value="Espada Mágica">Espada Mágica</option>
-                                <option value="Lâmina Flutuante">Lâmina Flutuante</option>
-                                <option value="Arco Curto">Arco Curto</option>
-                                <option value="Arco Longo">Arco Longo</option>
+                                <option value="adagas-duplas">Adagas Duplas</option>
+                                <option value="chain-blade">Chain Blades</option>
+                                <option value="espada-escudo">Espada + Escudo</option>
+                                <option value="espadas-gemeas">Espadas Gêmeas</option>
+                                <option value="manoplas">Manoplas</option>
+                                <option value="claymore">Claymore</option>
+                                <option value="glaive">Glaive</option>
+                                <option value="lamina-curva">Lâmina Curva</option>
+                                <option value="machadao">Machadão</option>
+                                <option value="marretao">Marretão</option>
+                                <option value="cajado">Cajado</option>
+                                <option value="grimorio">Grimório</option>
+                                <option value="espada-magica">Espada Mágica</option>
+                                <option value="lamina-flutuante">Lâmina Flutuante</option>
+                                <option value="arco-curto">Arco Curto</option>
+                                <option value="arco-longo">Arco Longo</option>
                             </select>
                         </div>
                         <div class="weapon-column">
@@ -499,6 +499,9 @@
                             <label>Move</label>
                             <input type="text" name="weapon-move[]">
                         </div>
+                    </div>
+                    <div id="weapon-bonus" style="display: none; margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                        <!-- O bônus da arma selecionada será exibido aqui -->
                     </div>
                     <button id="add-weapon">Adicionar Arma</button>
                 </section>
@@ -595,5 +598,6 @@
         <script src="./js/selections.js"></script>
         <script src="./js/saveImage.js"></script>
         <script src="./js/class.js"></script>
+        <script src="./js/scriptArma.js"></script>
 </body>
 </html>
