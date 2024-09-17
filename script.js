@@ -111,7 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 ca: armor.querySelector('input[name="armor-ca[]"]').value,
                 move: armor.querySelector('input[name="armor-move[]"]').value,
                 elemento: armor.querySelector('select[name="armor-element[]"]').value
-            }))
+            })),
+            profileImage: localStorage.getItem('profileImage') || ''
         };
 
         localStorage.setItem('fichaRPG', JSON.stringify(ficha));
@@ -227,4 +228,35 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.backgroundColor = "#FFFFFF";
         corFundoBranca = true;
     }
+});
+
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        const imagePreview = document.getElementById('profile-image-preview');
+        imagePreview.src = e.target.result;
+        imagePreview.style.display = 'block';
+        document.querySelector('.upload-area').style.display = 'none';
+        document.getElementById('change-image').style.display = 'block';
+        
+        // Salvar a imagem em base64 no localStorage
+        localStorage.setItem('profileImage', e.target.result);
+    }
+    
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... código existente ...
+
+    const imageUpload = document.getElementById('profile-image-upload');
+    if (imageUpload) {
+        imageUpload.addEventListener('change', handleImageUpload);
+    }
+
+    // ... resto do código ...
 });
