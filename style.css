@@ -398,3 +398,45 @@ button:hover {
         margin-bottom: 10px;
     }
   }
+
+.skills-equipment-container {
+    display: flex;
+    gap: 20px;
+}
+
+.skills-section {
+    flex: 0 0 60%; /* Ajuste este valor para controlar a largura da seção de perícias */
+}
+
+.equipment-section {
+    flex: 0 0 40%; /* Ajuste este valor para controlar a largura da seção de equipamentos */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.weapons, .armor {
+    width: 100%;
+}
+
+.weapons-grid, .armors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.weapon-column, .armor-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .skills-equipment-container {
+        flex-direction: column;
+    }
+
+    .skills-section, .equipment-section {
+        flex: 1 0 100%;
+    }
+}

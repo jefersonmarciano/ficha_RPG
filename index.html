@@ -32,92 +32,6 @@
                         </label>
                     </div>
                 </div>
-            <button id="mostrarTabela">Mochila</button>
-
-            <div id="tabelaPopup" class="popup">
-                <div class="popup-conteudo">
-                    <span class="fechar">&times;</span>
-                    <h2>Dentro da mochila</h2>
-                    <table id="tabelaItens">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Quantidade</th>
-                                <th>Descrição</th>
-                                <th>Remover</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" value="Item"></td>
-                                <td><input type="text" value="Quantidade"></td>
-                                <td><input type="text" value="Descrição"></td>
-                                <td><span class="remover-item">X</span></td>
-                            </tr>
-                            <tr>
-                                <td><input type="text" value="Item"></td>
-                                <td><input type="text" value="Quantidade"></td>
-                                <td><input type="text" value="Descrição"></td>
-                                <td><span class="remover-item">X</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button id="adicionarItem">Adicionar Item</button>
-                </div>
-            </div>
-
-            <style>
-                .popup {
-                    display: none;
-                    position: fixed;
-                    z-index: 1;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow: auto;
-                    background-color: rgba(0,0,0,0.4);
-                }
-
-                .popup-conteudo {
-                    background-color: #fefefe;
-                    margin: 15% auto;
-                    padding: 20px;
-                    border: 1px solid #888;
-                    width: 80%;
-                    max-width: 600px;
-                }
-
-                .fechar {
-                    color: #aaa;
-                    float: right;
-                    font-size: 28px;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-
-                .fechar:hover,
-                .fechar:focus {
-                    color: black;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
-
-                .remover-item {
-                    cursor: pointer;
-                    color: red;
-                    font-weight: bold;
-                }
-
-                #tabelaItens input[type="text"] {
-                    width: 100%;
-                    box-sizing: border-box;
-                    border: none;
-                    background-color: transparent;
-                }
-            </style>
-
-            
             </div>
             <div class="section basic-info">
                 <h2>Informações Básicas</h2>
@@ -305,8 +219,6 @@
                 </table>
             </div>
         </div>
-
-        
 
         <div class="skills-equipment-container">
             <div class="skills-section">
